@@ -1,5 +1,5 @@
 # BigDataAndVisualisation - Google CoLab notebooks
-Notebooks for Google CoLab (open the files directly from inside CoLab from GitHub)
+Notebooks for Google CoLab (open the files directly from inside CoLab with the load from GitHub option)
 
 ## Contents
 |File|Description|
