@@ -1,0 +1,459 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n# Hello World\n## Example in Zeppelin",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:46+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Hello World</h1>\n<h2>Example in Zeppelin</h2>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749653068156_1777745489",
+      "id": "paragraph_1749653068156_1777745489",
+      "dateCreated": "2025-06-11T14:44:28+0000",
+      "dateStarted": "2025-06-11T14:52:46+0000",
+      "dateFinished": "2025-06-11T14:52:46+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1682"
+    },
+    {
+      "text": "%livy2.pyspark\nfrom pyspark.sql import *\nfrom pyspark.sql.types import *",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:46+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749646792008_1018246863",
+      "id": "paragraph_1749646792008_1018246863",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "dateStarted": "2025-06-11T14:52:46+0000",
+      "dateFinished": "2025-06-11T14:52:47+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1683"
+    },
+    {
+      "text": "%livy2.pyspark\nimport csv\nimport io\nfrom io import StringIO",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:47+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749646881088_1519494036",
+      "id": "paragraph_1749646881088_1519494036",
+      "dateCreated": "2025-06-11T13:01:21+0000",
+      "dateStarted": "2025-06-11T14:52:47+0000",
+      "dateFinished": "2025-06-11T14:52:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1684"
+    },
+    {
+      "text": "%livy2.pyspark\ncsvFile = spark.read.csv('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv', header=True, inferSchema=True)\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:48+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749646938674_1447505160",
+      "id": "paragraph_1749646938674_1447505160",
+      "dateCreated": "2025-06-11T13:02:18+0000",
+      "dateStarted": "2025-06-11T14:52:48+0000",
+      "dateFinished": "2025-06-11T14:52:49+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1685"
+    },
+    {
+      "text": "%livy2.pyspark\n# How many rows in dataframe?\ncsvFile.count()",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:49+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "8000"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749653437373_1023047538",
+      "id": "paragraph_1749653437373_1023047538",
+      "dateCreated": "2025-06-11T14:50:37+0000",
+      "dateStarted": "2025-06-11T14:52:49+0000",
+      "dateFinished": "2025-06-11T14:52:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1686"
+    },
+    {
+      "text": "%livy2.pyspark\ncsvFile.createOrReplaceTempView(\"hvac_ss01shh\")",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:51+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749653457618_1572847781",
+      "id": "paragraph_1749653457618_1572847781",
+      "dateCreated": "2025-06-11T14:50:57+0000",
+      "dateStarted": "2025-06-11T14:52:51+0000",
+      "dateFinished": "2025-06-11T14:52:52+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1687"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT count(*) from hvac_ss01shh\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:52+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+\n|count(1)|\n+--------+\n|    8000|\n+--------+"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749647736655_76757981",
+      "id": "paragraph_1749647736655_76757981",
+      "dateCreated": "2025-06-11T13:15:36+0000",
+      "dateStarted": "2025-06-11T14:52:52+0000",
+      "dateFinished": "2025-06-11T14:52:53+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1688"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"DESCRIBE TABLE hvac_ss01shh\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:53+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+---------+-------+\n|  col_name|data_type|comment|\n+----------+---------+-------+\n|      Date|   string|   null|\n|      Time|timestamp|   null|\n|TargetTemp|      int|   null|\n|ActualTemp|      int|   null|\n|    System|      int|   null|\n| SystemAge|      int|   null|\n|BuildingID|      int|   null|\n+----------+---------+-------+"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749653487748_591030708",
+      "id": "paragraph_1749653487748_591030708",
+      "dateCreated": "2025-06-11T14:51:27+0000",
+      "dateStarted": "2025-06-11T14:52:53+0000",
+      "dateFinished": "2025-06-11T14:52:54+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1689"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT `buildingID`, (targettemp - actualtemp) AS `temp_diff`, date FROM hvac_ss01shh WHERE date = '6/1/13'\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:54+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+----------+---------+------+\n|buildingID|temp_diff|  date|\n+----------+---------+------+\n|         4|        8|6/1/13|\n|         3|        2|6/1/13|\n|         7|      -10|6/1/13|\n|        12|        3|6/1/13|\n|         7|        9|6/1/13|\n|         7|        5|6/1/13|\n|         3|       11|6/1/13|\n|         8|       -7|6/1/13|\n|        17|       14|6/1/13|\n|        16|       -3|6/1/13|\n|         8|       -8|6/1/13|\n|         1|       -1|6/1/13|\n|        12|       11|6/1/13|\n|         3|       14|6/1/13|\n|         6|       -4|6/1/13|\n|         1|        4|6/1/13|\n|        19|        4|6/1/13|\n|        19|       12|6/1/13|\n|         9|       -9|6/1/13|\n|        15|      -10|6/1/13|\n+----------+---------+------+\nonly showing top 20 rows"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749653507447_2133330507",
+      "id": "paragraph_1749653507447_2133330507",
+      "dateCreated": "2025-06-11T14:51:47+0000",
+      "dateStarted": "2025-06-11T14:52:54+0000",
+      "dateFinished": "2025-06-11T14:52:55+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1690"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2025-06-11T14:52:55+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1749647986531_666793200",
+      "id": "paragraph_1749647986531_666793200",
+      "dateCreated": "2025-06-11T13:19:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1691",
+      "dateFinished": "2025-06-11T14:52:56+0000",
+      "dateStarted": "2025-06-11T14:52:55+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
+          }
+        ]
+      }
+    }
+  ],
+  "name": "Hello World - Zeppelin",
+  "id": "2KYYBECEQ",
+  "defaultInterpreterGroup": "livy2",
+  "version": "0.10.1.5.1.7.7",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/ss01shh/Hello World - Zeppelin"
+}
