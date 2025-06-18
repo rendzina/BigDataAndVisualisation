@@ -8,13 +8,13 @@
 > Create a virtual environment for a python project
 
 *Cursor offers these commands in turn*
-python3 -m venv venv
-source venv/bin/activate
+**python3 -m venv venv**
+**source venv/bin/activate**
 
 *The project will use pymongo*
 
 *Cursor offers this command*
-pip3 install pymongo
+**pip3 install pymongo**
 
 > Now create a python script called ‘access-mongo.py’ to connect to a localhost installation of mongodb, using the database 'environmental' and the collection 'noise_mapping'.
 
