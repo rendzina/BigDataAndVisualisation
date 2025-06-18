@@ -1,7 +1,6 @@
 # Cursor AI Prompts
 ## Here are the prompts we used in Cursor to build the project (* = comments)
 ## This is all achieved without writing a single line of code!!!
-==========================================================================
 
 *blank folder prepared and opened*
 
