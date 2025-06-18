@@ -1,10 +1,11 @@
-Here are the prompts we used in Cursor to build the project (* = comments)
-This is all achieved without writing a single line of code!!!
+# Cursor AI Prompts
+## Here are the prompts we used in Cursor to build the project (* = comments)
+## This is all achieved without writing a single line of code!!!
 ==========================================================================
 
 * blank folder prepared and opened
 
-Create a virtual environment for a python project
+> Create a virtual environment for a python project
 
 * Cursor offers these commands in turn
 python3 -m venv venv
