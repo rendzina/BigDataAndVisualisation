@@ -61,6 +61,7 @@ Apache Zeppelin is an open-source web-based notebook that enables data-driven, i
 | **HelloWorld..ipynb** | Alternative Hello World implementation | Jupyter format | • Different approaches<br>• Code organisation<br>• Documentation practices |
 | **HelloWorld.zpln** | Native Zeppelin format | Zeppelin format | • Zeppelin workflow<br>• Parameter handling<br>• Visualisation options |
 | **HelloWorld2.ipynb** | Advanced Hello World with additional features | Jupyter format | • Advanced techniques<br>• Error handling<br>• Performance optimisation |
+| **BristolCityCouncilPropertyExample_Zeppelin.zpln** | Complete property data analysis solution for Zeppelin | Native Zeppelin format | • Real-world data processing<br>• Property market analysis<br>• Interactive data exploration<br>• Collaborative analysis workflows<br>• Advanced visualisation techniques |
 
 ## Key Features
 
@@ -195,8 +196,4 @@ These notebooks support learning in:
 
 **S. Hallett**  
 Course: MK:U, Big Data and Visualisation  
-Date: 18/06/2025
-
----
-
-*All notebooks use UK spelling conventions and follow best practices for collaborative data science workflows.*
+Date: 29/10/2025

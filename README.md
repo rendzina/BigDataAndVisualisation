@@ -35,6 +35,7 @@ Apache Zeppelin notebook examples for:
 - Interactive data analysis
 - Real-time data processing
 - Collaborative data science workflows
+- Property market analysis and visualisation
 
 ## Key Features
 
@@ -87,7 +88,7 @@ This project is for educational purposes. Please ensure you have appropriate per
 
 **S. Hallett**  
 Course: MK:U, Big Data and Visualisation  
-Date: 18/06/2025
+Date: 29/10/2025
 
 ---
 
