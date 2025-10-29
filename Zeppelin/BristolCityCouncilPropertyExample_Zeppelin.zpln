@@ -1,0 +1,1251 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n# Bristol City Council Land and Building Assets challenge\n\n## Unit 2 Problem Definition and Suggested Solutions - Zeppelin Version\n### Useful links\n\n#### Data source\n\n[https://www.data.gov.uk/dataset/a98345ad-7f4c-4f6e-882b-e631dc1cc046/bristol-city-council-land-and-building-assets](https://www.data.gov.uk/dataset/a98345ad-7f4c-4f6e-882b-e631dc1cc046/bristol-city-council-land-and-building-assets)\n\n[https://www.bristol.gov.uk/files/documents/7241-land-property-2023/file]([https://www.bristol.gov.uk/files/documents/7241-land-property-2023/file])\n\n#### Programming\n\n[https://www.projectpro.io/recipes/explain-structtype-and-structfield-pyspark-databricks#:~:text=The%20StructField%20in%20PySpark%20represents,the%20name%20of%20the%20StructField](https://www.projectpro.io/recipes/explain-structtype-and-structfield-pyspark-databricks#:~:text=The%20StructField%20in%20PySpark%20represents,the%20name%20of%20the%20StructField)\n\n[https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.types.StructType.html#:~:text=.StructType%5Bsource%5D-,Construct%20a%20StructType%20by%20adding%20new%20elements%20to%20it%2C%20to,)%2C%20metadata(optional)](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.types.StructType.html#:~:text=.StructType%5Bsource%5D-,Construct%20a%20StructType%20by%20adding%20new%20elements%20to%20it%2C%20to,)%2C%20metadata(optional))\n\n[https://sparkbyexamples.com/pyspark/pyspark-read-csv-file-into-dataframe/](https://sparkbyexamples.com/pyspark/pyspark-read-csv-file-into-dataframe/)\n\n[https://sparkbyexamples.com/pyspark/pyspark-sql-date-and-timestamp-functions/](https://sparkbyexamples.com/pyspark/pyspark-sql-date-and-timestamp-functions/)\n\n[https://spark.apache.org/examples.html](https://spark.apache.org/examples.html]) and [https://github.com/apache/spark/tree/master/examples/src/main/python](https://github.com/apache/spark/tree/master/examples/src/main/python)\n\n[https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch04.html](https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch04.html)",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:20+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Bristol City Council Land and Building Assets challenge</h1>\n<h2>Unit 2 Problem Definition and Suggested Solutions - Zeppelin Version</h2>\n<h3>Useful links</h3>\n<h4>Data source</h4>\n<p><a href=\"https://www.data.gov.uk/dataset/a98345ad-7f4c-4f6e-882b-e631dc1cc046/bristol-city-council-land-and-building-assets\">https://www.data.gov.uk/dataset/a98345ad-7f4c-4f6e-882b-e631dc1cc046/bristol-city-council-land-and-building-assets</a></p>\n<p><a href=\"[https://www.bristol.gov.uk/files/documents/7241-land-property-2023/file]\">https://www.bristol.gov.uk/files/documents/7241-land-property-2023/file</a></p>\n<h4>Programming</h4>\n<p><a href=\"https://www.projectpro.io/recipes/explain-structtype-and-structfield-pyspark-databricks#:~:text=The%20StructField%20in%20PySpark%20represents,the%20name%20of%20the%20StructField\">https://www.projectpro.io/recipes/explain-structtype-and-structfield-pyspark-databricks#:~:text=The%20StructField%20in%20PySpark%20represents,the%20name%20of%20the%20StructField</a></p>\n<p><a href=\"https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.types.StructType.html#:~:text=.StructType%5Bsource%5D-,Construct%20a%20StructType%20by%20adding%20new%20elements%20to%20it%2C%20to,\">https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.types.StructType.html#:~:text=.StructType%5Bsource%5D-,Construct%20a%20StructType%20by%20adding%20new%20elements%20to%20it%2C%20to,)%2C%20metadata(optional)</a>%2C%20metadata(optional))</p>\n<p><a href=\"https://sparkbyexamples.com/pyspark/pyspark-read-csv-file-into-dataframe/\">https://sparkbyexamples.com/pyspark/pyspark-read-csv-file-into-dataframe/</a></p>\n<p><a href=\"https://sparkbyexamples.com/pyspark/pyspark-sql-date-and-timestamp-functions/\">https://sparkbyexamples.com/pyspark/pyspark-sql-date-and-timestamp-functions/</a></p>\n<p><a href=\"https://spark.apache.org/examples.html]\">https://spark.apache.org/examples.html</a> and <a href=\"https://github.com/apache/spark/tree/master/examples/src/main/python\">https://github.com/apache/spark/tree/master/examples/src/main/python</a></p>\n<p><a href=\"https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch04.html\">https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/ch04.html</a></p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761661139512_170330947",
+      "id": "paragraph_1761661139512_170330947",
+      "dateCreated": "2025-10-28T14:18:59+0000",
+      "dateStarted": "2025-10-29T00:19:20+0000",
+      "dateFinished": "2025-10-29T00:19:20+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:30362"
+    },
+    {
+      "text": "%livy2.pyspark\n# Load CSV - can be from a standalone local file, or online file source - here is is a local file in storage blob\nimport csv\nimport io\nfrom io import StringIO\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:20+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761662928580_893681000",
+      "id": "paragraph_1761662928580_893681000",
+      "dateCreated": "2025-10-28T14:48:48+0000",
+      "dateStarted": "2025-10-29T00:19:20+0000",
+      "dateFinished": "2025-10-29T00:19:21+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30363"
+    },
+    {
+      "text": "%livy2.pyspark\n\n# Note the following will work OK, loading in the CSV file with an inferred schema to the df data frame. But instead, let us demonstrate how to add a defined schema when imorting cSV data to retain more control.\n#df = spark.read.csv(\"/HdiSamples/BristolCityCouncilLandAndBuildingAssets-2024.csv\", header=True, inferSchema=True)\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:21+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761663558238_1528182957",
+      "id": "paragraph_1761663558238_1528182957",
+      "dateCreated": "2025-10-28T14:59:18+0000",
+      "dateStarted": "2025-10-29T00:19:21+0000",
+      "dateFinished": "2025-10-29T00:19:22+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30364"
+    },
+    {
+      "text": "%livy2.pyspark\n\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql.types import StructType, StructField, StringType, IntegerType \nfrom pyspark.sql.types import DoubleType, BooleanType, DateType, LongType, FloatType\n\n# Using custom schema\nschema =  StructType() \\\n      .add(\"Organisation Name\", StringType(), True) \\\n      .add(\"Organisation Code\", StringType(), True) \\\n      .add(\"Effective Date\", DateType(), True) \\\n      .add(\"UPRN\", StringType(), True) \\\n      .add(\"Property ID\", IntegerType(), True) \\\n      .add(\"Property Type\", StringType(), True) \\\n      .add(\"Property Name/Address (Where no UPRN)\", StringType(), True) \\\n      .add(\"Property Address Detail\", StringType(), True) \\\n      .add(\"Secondary Address Detail\", StringType(), True) \\\n      .add(\"Street Number\", StringType(), True) \\\n      .add(\"Street\", StringType(), True) \\\n      .add(\"Town / Post Town\", StringType(), True) \\\n      .add(\"Post Code\", StringType(), True) \\\n      .add(\"Ward\", StringType(), True) \\\n      .add(\"Geo X (Easting)\", LongType(), True) \\\n      .add(\"Geo Y (Northing)\", LongType(), True) \\\n      .add(\"Tenure Type\", StringType(), True) \\\n      .add(\"Ground Lease In\", StringType(), True) \\\n      .add(\"Ground Lease Out\", StringType(), True) \\\n      .add(\"Lease In to Council\", StringType(), True) \\\n      .add(\"Lease Out\", StringType(), True) \\\n      .add(\"Licence In to Council\", StringType(), True) \\\n      .add(\"Licence Out\", StringType(), True) \\\n      .add(\"Sub-lease In to Council\", StringType(), True) \\\n      .add(\"Sub-lease Out\", StringType(), True) \\\n      .add(\"Vacant\", StringType(), True) \\\n      .add(\"Asset Type\", StringType(), True) \\\n      .add(\"Building Size - GIA (M2)\", FloatType(), True) \\\n      .add(\"Site Area (Hectares)\", FloatType(), True) \\\n      .add(\"Occupied by Council / Direct Service Property\", StringType(), True) \\\n      .add(\"Purpose / Asset Category\", StringType(), True)\n      \ndf = spark.read.format(\"csv\") \\\n      .options(header=\"True\", inferSchema=\"False\", delimiter=\",\", dateFormat=\"d/M/yyyy\") \\\n      .schema(schema) \\\n      .load(\"/HdiSamples/BristolCityCouncilLandAndBuildingAssets-2024.csv\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:22+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761661198186_1500287212",
+      "id": "paragraph_1761661198186_1500287212",
+      "dateCreated": "2025-10-28T14:19:58+0000",
+      "dateStarted": "2025-10-29T00:19:22+0000",
+      "dateFinished": "2025-10-29T00:19:23+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30365"
+    },
+    {
+      "text": "%livy2.pyspark\nfrom IPython.display import display\ndisplay(df)",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:23+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[Organisation Name: string, Organisation Code: string, Effective Date: date, UPRN: string, Property ID: int, Property Type: string, Property Name/Address (Where no UPRN): string, Property Address Detail: string, Secondary Address Detail: string, Street Number: string, Street: string, Town / Post Town: string, Post Code: string, Ward: string, Geo X (Easting): bigint, Geo Y (Northing): bigint, Tenure Type: string, Ground Lease In: string, Ground Lease Out: string, Lease In to Council: string, Lease Out: string, Licence In to Council: string, Licence Out: string, Sub-lease In to Council: string, Sub-lease Out: string, Vacant: string, Asset Type: string, Building Size - GIA (M2): float, Site Area (Hectares): float, Occupied by Council / Direct Service Property: string, Purpose / Asset Category: string]"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761690727558_78612554",
+      "id": "paragraph_1761690727558_78612554",
+      "dateCreated": "2025-10-28T22:32:07+0000",
+      "dateStarted": "2025-10-29T00:19:23+0000",
+      "dateFinished": "2025-10-29T00:19:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30366"
+    },
+    {
+      "text": "%livy2.pyspark\n# Show schema\nspark.sql(\"DESCRIBE TABLE ss01shh_Bristol\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:24+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+---------+-------+\n|            col_name|data_type|comment|\n+--------------------+---------+-------+\n|   Organisation Name|   string|   null|\n|   Organisation Code|   string|   null|\n|      Effective Date|     date|   null|\n|                UPRN|   string|   null|\n|         Property ID|      int|   null|\n|       Property Type|   string|   null|\n|Property Name/Add...|   string|   null|\n|Property Address ...|   string|   null|\n|Secondary Address...|   string|   null|\n|       Street Number|   string|   null|\n|              Street|   string|   null|\n|    Town / Post Town|   string|   null|\n|           Post Code|   string|   null|\n|                Ward|   string|   null|\n|     Geo X (Easting)|   bigint|   null|\n|    Geo Y (Northing)|   bigint|   null|\n|         Tenure Type|   string|   null|\n|     Ground Lease In|   string|   null|\n|    Ground Lease Out|   string|   null|\n| Lease In to Council|   string|   null|\n+--------------------+---------+-------+\nonly showing top 20 rows"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761690494459_124141837",
+      "id": "paragraph_1761690494459_124141837",
+      "dateCreated": "2025-10-28T22:28:14+0000",
+      "dateStarted": "2025-10-29T00:19:24+0000",
+      "dateFinished": "2025-10-29T00:19:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30367"
+    },
+    {
+      "text": "%livy2.pyspark\n# Show dataframe\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:25+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+--------------------+--------------+------------+-----------+--------------------+-------------------------------------+-----------------------+------------------------+-------------+---------------+----------------+---------+--------------------+---------------+----------------+-----------+---------------+----------------+-------------------+---------+---------------------+-----------+-----------------------+-------------+------+--------------------+------------------------+--------------------+---------------------------------------------+------------------------+\n|Organisation Name|   Organisation Code|Effective Date|        UPRN|Property ID|       Property Type|Property Name/Address (Where no UPRN)|Property Address Detail|Secondary Address Detail|Street Number|         Street|Town / Post Town|Post Code|                Ward|Geo X (Easting)|Geo Y (Northing)|Tenure Type|Ground Lease In|Ground Lease Out|Lease In to Council|Lease Out|Licence In to Council|Licence Out|Sub-lease In to Council|Sub-lease Out|Vacant|          Asset Type|Building Size - GIA (M2)|Site Area (Hectares)|Occupied by Council / Direct Service Property|Purpose / Asset Category|\n+-----------------+--------------------+--------------+------------+-----------+--------------------+-------------------------------------+-----------------------+------------------------+-------------+---------------+----------------+---------+--------------------+---------------+----------------+-----------+---------------+----------------+-------------------+---------+---------------------+-----------+-----------------------+-------------+------+--------------------+------------------------+--------------------+---------------------------------------------+------------------------+\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1603| Land-Car/Lorry Park|                 Victoria Road - L...|   Victoria Road - L...|                    null|         null|           null|            null|     null|       Lawrence Hill|         360190|          171930|   Freehold|           null|            null|               null|Lease Out|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.0585|                                         null|    Indirect Service ...|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1475|         Land-Garden|                 Hill Cottage - La...|   Hill Cottage - La...|                    null|         null|           null|            null|     null|    Brislington East|         362169|          170504|   Freehold|           null|            null|               null|     null|                 null|Licence Out|                   null|         null|  null|           Land only|                    null|              0.0148|                                         null|    Indirect Service ...|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1476|          Land-Verge|                 Stapleton Road - ...|   Stapleton Road - ...|                    null|         null|           null|            null|     null|       Lawrence Hill|         360605|          174540|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.675358|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1483| Industrial/Workshop|                 Cumberland Basin ...|   Cumberland Basin ...|                    null|         null|           null|            null|     null|Hotwells & Harbou...|         356782|          172272|   Freehold|           null|            null|               null|Lease Out|                 null|       null|                   null|         null|  null|Land and Building(s)|                     0.0|            0.493444|                                         null|    Investment Proper...|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1490|          Land-Verge|                 Dalkeith Avenue/I...|   Dalkeith Avenue/I...|                    null|         null|           null|            null|     null|   St George Central|         364032|          174282|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.0147|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1498|          Land-Verge|                 West Street - Lan...|   West Street - Lan...|                    null|         null|           null|            null|     null|          Bedminster|         358269|          171319|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.010534|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1503|        Land-Grazing|                 Eastwood Farm - L...|   Eastwood Farm - L...|                    null|         null|           null|            null|     null|    Brislington East|         363317|          171519|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            4.633655|                                          Yes|          Direct Service|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1511|          Land-Verge|                 Blackberry Hill -...|   Blackberry Hill -...|                    null|         null|           null|            null|     null|          Frome Vale|         362020|          176322|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.0322|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1514|          Land-Verge|                 Lower Knole Lane/...|   Lower Knole Lane/...|                    null|         null|           null|            null|     null|   Henbury & Brentry|         357265|          179094|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.0079|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1927|     Land-Open Space|                 Fraser Street - L...|   Fraser Street - L...|                    null|         null|           null|            null|     null|       Windmill Hill|         358838|          171430|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.1936|                                          Yes|          Direct Service|\n| Bristol, City of|http://opendataco...|    2024-02-02|000000303908|       1929|Land-Railway/Stat...|                 West Town Road - ...|   West Town Road - ...|                    null|         null| West Town Road|         Bristol|     null|Avonmouth & Lawre...|         352128|          176962|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            1.099583|                                          Yes|          Direct Service|\n| Bristol, City of|http://opendataco...|    2024-02-02|000000199821|       1931|     Land-Industrial|                 Albert Crescent -...|   Albert Crescent -...|                    null|         null|Albert Crescent|         Bristol|  BS2 0SU|       Lawrence Hill|         360475|          172230|   Freehold|           null|            null|               null|Lease Out|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.141707|                                         null|    Indirect Service ...|\n| Bristol, City of|http://opendataco...|    2024-02-02|000000303814|       1940|          Land-Verge|                 Saltwell Viaduct ...|   Saltwell Viaduct ...|                    null|         null|     Wells Road|         Bristol|         |           Stockwood|         361242|          168200|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.047247|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|000000299775|       1941| Land-Car/Lorry Park|                 Brislington Park ...|   Brislington Park ...|                    null|         null| Stockwood Road|         Bristol| BS14 5LR|    Brislington West|         362757|          170016|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|Land and Building(s)|                   147.0|            5.270843|                                          Yes|          Direct Service|\n| Bristol, City of|http://opendataco...|    2024-02-02|000000303846|       1845|        Land-Amenity|                 Bushy Park Open S...|   Bushy Park Open S...|                    null|         null|     Bushy Park|         Bristol|         |       Windmill Hill|         359904|          171556|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.214309|                                          Yes|          Direct Service|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1847| Land-Car/Lorry Park|                 Broomhill Road - ...|   Broomhill Road - ...|                    null|         null|           null|            null|         |    Brislington East|         362751|          171428|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.0012|                                         null|    Surplus / Non-ope...|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|     124473|Land-Electricity ...|                 St Johns Crescent...|   St Johns Crescent...|                    null|         null|           null|            null|         |       Windmill Hill|         359438|          170887|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.001562|                                         null|    Surplus / Non-ope...|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1770|          Land-Verge|                 St Lukes Road - V...|   St Lukes Road - V...|                    null|         null|           null|            null|         |       Windmill Hill|         359560|          171634|Mixed Title|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.235119|                                         null|          Infrastructure|\n| Bristol, City of|http://opendataco...|    2024-02-02|000000342227|       1774|Land-Railway/Stat...|                 Muller Road - Emb...|   Muller Road - Emb...|                    null|         null|    Muller Road|         Bristol|         |           Lockleaze|         360499|          175451|   Freehold|           null|            null|               null|     null|                 null|       null|                   null|         null|  null|           Land only|                    null|              0.1756|                                          Yes|          Direct Service|\n| Bristol, City of|http://opendataco...|    2024-02-02|        null|       1777|Land-Open Store/Yard|                 Albert Road - Lan...|   Albert Road - Lan...|                    null|         null|           null|            null|         |       Lawrence Hill|         360076|          171901|   Freehold|           null|            null|               null|Lease Out|                 null|       null|                   null|         null|  null|           Land only|                    null|            0.099625|                                         null|    Indirect Service ...|\n+-----------------+--------------------+--------------+------------+-----------+--------------------+-------------------------------------+-----------------------+------------------------+-------------+---------------+----------------+---------+--------------------+---------------+----------------+-----------+---------------+----------------+-------------------+---------+---------------------+-----------+-----------------------+-------------+------+--------------------+------------------------+--------------------+---------------------------------------------+------------------------+\nonly showing top 20 rows"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761690545667_414334677",
+      "id": "paragraph_1761690545667_414334677",
+      "dateCreated": "2025-10-28T22:29:05+0000",
+      "dateStarted": "2025-10-29T00:19:25+0000",
+      "dateFinished": "2025-10-29T00:19:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30368"
+    },
+    {
+      "text": "%livy2.pyspark\n# The data is now ready to use. First let's take the df and create a new virtial HIVE table to query in Spark with SPARK-SQL\n\n# Register the dataframe as a virtual HIVE table to allow SparkSQL\n#df.registerTempTable('BristolCouncilAssets') # depracated form of command, nopw replaced with ...\ndf.createOrReplaceTempView(\"ss01shh_Bristol\")",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:26+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761663677091_1575745210",
+      "id": "paragraph_1761663677091_1575745210",
+      "dateCreated": "2025-10-28T15:01:17+0000",
+      "dateStarted": "2025-10-29T00:19:26+0000",
+      "dateFinished": "2025-10-29T00:19:28+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30369"
+    },
+    {
+      "text": "%md # Problem 1\nHow many ‘Properties’ are Bristol City Council (BCC) responsible for (as owner, user or manager)?",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:28+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Problem 1</h1>\n<p>How many ‘Properties’ are Bristol City Council (BCC) responsible for (as owner, user or manager)?</p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761664108916_1674628427",
+      "id": "paragraph_1761664108916_1674628427",
+      "dateCreated": "2025-10-28T15:08:28+0000",
+      "dateStarted": "2025-10-29T00:19:28+0000",
+      "dateFinished": "2025-10-29T00:19:28+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30370"
+    },
+    {
+      "text": "%livy2.pyspark\n#Use PySpark commands to query dataframe\ndf.count()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:28+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "3805"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761690257228_396326147",
+      "id": "paragraph_1761690257228_396326147",
+      "dateCreated": "2025-10-28T22:24:17+0000",
+      "dateStarted": "2025-10-29T00:19:28+0000",
+      "dateFinished": "2025-10-29T00:19:29+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30371"
+    },
+    {
+      "text": "%livy2.pyspark\n# Alternatively, use SPARK-SQL to query the HIVE table we created\nspark.sql(\"SELECT count(*) from ss01shh_Bristol\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:29+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+\n|count(1)|\n+--------+\n|    3805|\n+--------+"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761663931390_2031911077",
+      "id": "paragraph_1761663931390_2031911077",
+      "dateCreated": "2025-10-28T15:05:31+0000",
+      "dateStarted": "2025-10-29T00:19:29+0000",
+      "dateFinished": "2025-10-29T00:19:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30372"
+    },
+    {
+      "text": "%md # Problem 2\n\nHow many unique ‘Property Type’s are Bristol City Council (BCC) responsible for (as owner, user or manager)?",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:30+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Problem 2</h1>\n<p>How many unique ‘Property Type’s are Bristol City Council (BCC) responsible for (as owner, user or manager)?</p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761664314778_1829438736",
+      "id": "paragraph_1761664314778_1829438736",
+      "dateCreated": "2025-10-28T15:11:54+0000",
+      "dateStarted": "2025-10-29T00:19:30+0000",
+      "dateFinished": "2025-10-29T00:19:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30373"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT DISTINCT `Property Type` FROM ss01shh_Bristol ORDER BY `Property Type`\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:30+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+\n|       Property Type|\n+--------------------+\n| Access/Right Of Way|\n|Agricultural Buil...|\n|Block/Blocks Of F...|\n|      Bridge/Pontoon|\n|         Bus Shelter|\n|     Cafe/Restaurant|\n|    Childrens Centre|\n|     Childrens Homes|\n|Church/Religious ...|\n|  Civic Amenity Site|\n| Club/Cinema/Theatre|\n|Community Centre/...|\n|              Courts|\n|         Crematorium|\n|          Day Centre|\n|         Day Nursery|\n|Drainage/Water Pi...|\n|  E P Home/Dwellings|\n|Energy Generation...|\n|Field Study Centr...|\n+--------------------+\nonly showing top 20 rows"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761664397136_1688863221",
+      "id": "paragraph_1761664397136_1688863221",
+      "dateCreated": "2025-10-28T15:13:17+0000",
+      "dateStarted": "2025-10-29T00:19:30+0000",
+      "dateFinished": "2025-10-29T00:19:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30374"
+    },
+    {
+      "text": "%md The above output is broken down to show all the seperate property types - if we just want a total count then we can do as is shown below.\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:31+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<p>The above output is broken down to show all the seperate property types - if we just want a total count then we can do as is shown below.</p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761664572084_264852071",
+      "id": "paragraph_1761664572084_264852071",
+      "dateCreated": "2025-10-28T15:16:12+0000",
+      "dateStarted": "2025-10-29T00:19:31+0000",
+      "dateFinished": "2025-10-29T00:19:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30375"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT Count(*) AS Count FROM (SELECT DISTINCT `Property Type` FROM ss01shh_Bristol) types\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:31+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----+\n|Count|\n+-----+\n|  108|\n+-----+"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761664477942_2063017443",
+      "id": "paragraph_1761664477942_2063017443",
+      "dateCreated": "2025-10-28T15:14:37+0000",
+      "dateStarted": "2025-10-29T00:19:31+0000",
+      "dateFinished": "2025-10-29T00:19:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30376"
+    },
+    {
+      "text": "%md\n# Problem 3\n\nHow many properties are there in each of the ‘Property Types’?",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:19:32+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Problem 3</h1>\n<p>How many properties are there in each of the ‘Property Types’?</p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761666347276_548930367",
+      "id": "paragraph_1761666347276_548930367",
+      "dateCreated": "2025-10-28T15:45:47+0000",
+      "dateStarted": "2025-10-29T00:19:32+0000",
+      "dateFinished": "2025-10-29T00:19:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30377"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT `Property Type`, Count(*) AS Count FROM ss01shh_Bristol GROUP BY `Property Type` ORDER BY `Property Type`\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:21:22+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+-----+\n|       Property Type|Count|\n+--------------------+-----+\n| Access/Right Of Way|   20|\n|Agricultural Buil...|    2|\n|Block/Blocks Of F...|    1|\n|      Bridge/Pontoon|   17|\n|         Bus Shelter|    5|\n|     Cafe/Restaurant|   28|\n|    Childrens Centre|   21|\n|     Childrens Homes|    9|\n|Church/Religious ...|   12|\n|  Civic Amenity Site|    2|\n| Club/Cinema/Theatre|   14|\n|Community Centre/...|   72|\n|              Courts|    1|\n|         Crematorium|    3|\n|          Day Centre|    6|\n|         Day Nursery|   11|\n|Drainage/Water Pi...|    5|\n|  E P Home/Dwellings|    2|\n|Energy Generation...|    1|\n|Field Study Centr...|    1|\n+--------------------+-----+\nonly showing top 20 rows"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761666375822_1285544904",
+      "id": "paragraph_1761666375822_1285544904",
+      "dateCreated": "2025-10-28T15:46:15+0000",
+      "dateStarted": "2025-10-29T00:21:22+0000",
+      "dateFinished": "2025-10-29T00:21:23+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30378"
+    },
+    {
+      "text": "%livy2.sql\n-- The same data but an alternative view using livy2.sql magic - now we can use the built in graphics (note as this is sql, comments start with '--')\nSELECT `Property Type`, Count(*) AS Count FROM ss01shh_Bristol GROUP BY `Property Type` ORDER BY Count DESC LIMIT 15",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:24:28+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Property Type": "string",
+                      "Count": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Property Type",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Count",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Property Type\tCount\nLand-Open Space\t463\nLand-Amenity\t409\nLand-Residential\t321\nStore\\Depot\\Wareh...\t198\nLand-Verge\t198\nOffices\t176\nShop\\Kiosk\t169\nLand-Playingfield...\t149\nPrimary School\t136\nLand-Allotments-S...\t128\nLand-Car\\Lorry Park\t99\nGarage\\Garages\\Ca...\t78\nCommunity Centre\\...\t72\nLand-Garden\t72\nIndustrial\\Workshop\t70"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761694786398_304788924",
+      "id": "paragraph_1761694786398_304788924",
+      "dateCreated": "2025-10-28T23:39:46+0000",
+      "dateStarted": "2025-10-29T00:23:49+0000",
+      "dateFinished": "2025-10-29T00:23:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30379"
+    },
+    {
+      "text": "%md\n# Problem 4\n\nShow a histogram classifying the total area (in Ha) of each of these 'property types'\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:20:56+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Problem 4</h1>\n<p>Show a histogram classifying the total area (in Ha) of each of these 'property types'</p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761666414099_1981860608",
+      "id": "paragraph_1761666414099_1981860608",
+      "dateCreated": "2025-10-28T15:46:54+0000",
+      "dateStarted": "2025-10-29T00:20:56+0000",
+      "dateFinished": "2025-10-29T00:20:56+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30380"
+    },
+    {
+      "text": "%livy2.pyspark\narea_data = spark.sql(\"SELECT `Property Type`, Sum(`Site Area (Hectares)`) AS Total_Area FROM ss01shh_Bristol GROUP BY `Property Type` ORDER BY Sum(`Site Area (Hectares)`) DESC LIMIT 15\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:20:57+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+------------------+\n|       Property Type|        Total_Area|\n+--------------------+------------------+\n|     Land-Open Space|1192.3942851121974|\n|Land-Playingfield...|286.17688085359987|\n|Land-Farm/Agricul...|229.79294028878212|\n|         Land-Common|185.86566639039665|\n|Land-Allotments-S...|184.47912116115913|\n|    Land-Residential|  180.734726454466|\n|    Land-Public Park| 162.1737988095265|\n|      Primary School|155.51872257888317|\n|    Secondary School|112.22849250771105|\n|Store/Depot/Wareh...| 85.51323714206228|\n|       Land-Cemetery| 78.00827745813876|\n|        Land-Amenity| 74.92213788520894|\n|  Land-Village Green| 72.99648479372263|\n|Land-River/Bank/F...| 72.61394171230495|\n|     Land-Industrial|46.291421202826314|\n+--------------------+------------------+"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761666509337_128909589",
+      "id": "paragraph_1761666509337_128909589",
+      "dateCreated": "2025-10-28T15:48:29+0000",
+      "dateStarted": "2025-10-29T00:20:57+0000",
+      "dateFinished": "2025-10-29T00:20:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30381"
+    },
+    {
+      "text": "%livy2.pyspark\n# Create bar chart for total area by property type\nimport matplotlib\nmatplotlib.use('Agg')  # Use non-interactive backend for Zeppelin\nimport matplotlib.pyplot as plt\nimport pandas as pd\nimport io\nimport base64\n\n# Initialize Zeppelin display object\ntry:\n    from zeppelin import Zeppelin\n    z = Zeppelin()\n    print(\"Zeppelin object initialized successfully\")\nexcept ImportError:\n    try:\n        # Alternative import method\n        import zeppelin\n        z = zeppelin\n        print(\"Zeppelin imported as module\")\n    except ImportError:\n        print(\"Zeppelin module not available - will use alternative methods\")\n\n#plt.close('all') \n\n# For the data source, we will use the data query above - which created 'area_data' from the SQL query\narea_data = spark.sql(\"SELECT `Property Type`, Sum(`Site Area (Hectares)`) AS Total_Area FROM ss01shh_Bristol GROUP BY `Property Type` ORDER BY Sum(`Site Area (Hectares)`) DESC LIMIT 15\")\n\n# Convert to Pandas DataFrame for plotting\narea_df = area_data.toPandas()\n\n# Create the bar chart\nplt.figure(figsize=(14, 8))\nbars = plt.bar(range(len(area_df)), area_df['Total_Area'], color='steelblue', alpha=0.7)\n\n# Customise the chart\nplt.title('Total Site Area by Property Type (Top 15)', fontsize=16, fontweight='bold')\nplt.xlabel('Property Type', fontsize=12)\nplt.ylabel('Total Area (Hectares)', fontsize=12)\nplt.xticks(range(len(area_df)), area_df['Property Type'], rotation=45, ha='right')\n\n# Add value labels on top of bars\nfor i, bar in enumerate(bars):\n    height = bar.get_height()\n    plt.text(bar.get_x() + bar.get_width()/2., height + height*0.01,\n             f'{height:.1f}', ha='center', va='bottom', fontsize=9)\n\n# Adjust layout to prevent label cutoff\nplt.tight_layout()\nplt.grid(axis='y', alpha=0.3)\n\n# Plot output\nshow(plt)\n\n\n# Display the data table as well\n#print(\"\\nData used for the chart:\")\n#area_df\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:45:20+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "name 'show' is not defined\nTraceback (most recent call last):\nNameError: name 'show' is not defined\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761692359059_1581842208",
+      "id": "paragraph_1761692359059_1581842208",
+      "dateCreated": "2025-10-28T22:59:19+0000",
+      "dateStarted": "2025-10-29T00:45:20+0000",
+      "dateFinished": "2025-10-29T00:45:21+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:30382"
+    },
+    {
+      "text": "%livy2.sql\n-- ALTERNATIVE METHOD: Use Zeppelin's built-in SQL visualization\n-- This is the most reliable method for charts in Zeppelin\n-- The chart will appear automatically when you run this cell\nSELECT \n    `Property Type` as property_type,\n    ROUND(SUM(`Site Area (Hectares)`), 2) as total_area_hectares\nFROM ss01shh_Bristol \nGROUP BY `Property Type` \nORDER BY total_area_hectares DESC\nLIMIT 15\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:20:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "property_type": "string",
+                      "total_area_hectares": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "property_type",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "total_area_hectares",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "property_type\ttotal_area_hectares\nLand-Open Space\t1192.39\nLand-Playingfield...\t286.18\nLand-Farm\\Agricul...\t229.79\nLand-Common\t185.87\nLand-Allotments-S...\t184.48\nLand-Residential\t180.73\nLand-Public Park\t162.17\nPrimary School\t155.52\nSecondary School\t112.23\nStore\\Depot\\Wareh...\t85.51\nLand-Cemetery\t78.01\nLand-Amenity\t74.92\nLand-Village Green\t73.0\nLand-River\\Bank\\F...\t72.61\nLand-Industrial\t46.29"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761694444627_657984149",
+      "id": "paragraph_1761694444627_657984149",
+      "dateCreated": "2025-10-28T23:34:04+0000",
+      "dateStarted": "2025-10-29T00:20:06+0000",
+      "dateFinished": "2025-10-29T00:20:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30383"
+    },
+    {
+      "text": "%md\n# Problem 5\n\nFor each of these grouped properties, what are the numbers of properties in each ‘tenure type’ recorded?",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:20:11+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<h1>Problem 5</h1>\n<p>For each of these grouped properties, what are the numbers of properties in each ‘tenure type’ recorded?</p>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761666580583_1423498337",
+      "id": "paragraph_1761666580583_1423498337",
+      "dateCreated": "2025-10-28T15:49:40+0000",
+      "dateStarted": "2025-10-29T00:20:11+0000",
+      "dateFinished": "2025-10-29T00:20:11+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30384"
+    },
+    {
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT `Property Type`, `Tenure Type`, COUNT(*) AS Count FROM ss01shh_Bristol GROUP BY `Tenure Type`, `Property Type` ORDER BY `Property Type` DESC\").show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:20:15+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+--------------------+-----+\n|       Property Type|         Tenure Type|Count|\n+--------------------+--------------------+-----+\n|   Youth Club/Centre|            Freehold|    6|\n|   Youth Club/Centre|           Leasehold|    1|\n|   Underground Store|            Freehold|    3|\n|              Tunnel|            Freehold|    1|\n|              Tunnel|Maintenance Oblig...|    1|\n|    Transfer Station|           Leasehold|    1|\n|Training/Communit...|            Freehold|    7|\n|Training/Communit...|Management Agreement|    1|\n|Telecommunication...|            Freehold|    5|\n|       Swimming Pool|            Freehold|    2|\n|     Street Lighting|            Freehold|    1|\n|Store/Depot/Wareh...|         Mixed Title|    2|\n|Store/Depot/Wareh...|            Freehold|  184|\n|Store/Depot/Wareh...|           Leasehold|    3|\n|Store/Depot/Wareh...|  Freehold Reversion|    8|\n|Store/Depot/Wareh...|Management Agreement|    1|\n|Statue/Monument/F...|Maintenance Oblig...|   19|\n|Statue/Monument/F...|Management Agreement|    1|\n|Statue/Monument/F...|            Freehold|    5|\n|Sports Building/H...|            Freehold|   41|\n+--------------------+--------------------+-----+\nonly showing top 20 rows"
+          },
+          {
+            "type": "HTML",
+            "data": "<hr/>Spark Application Id: application_1761652053166_0021<br/>Spark WebUI: <a href=\"http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/\">http://hn1-bdv.1rg5hxcehq1etdsotpvoiav12d.bx.internal.cloudapp.net:8088/proxy/application_1761652053166_0021/</a>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761666608211_615505302",
+      "id": "paragraph_1761666608211_615505302",
+      "dateCreated": "2025-10-28T15:50:08+0000",
+      "dateStarted": "2025-10-29T00:20:15+0000",
+      "dateFinished": "2025-10-29T00:20:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:30385"
+    },
+    {
+      "text": "%livy2.pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-10-29T00:20:15+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1761697215139_1650875209",
+      "id": "paragraph_1761697215139_1650875209",
+      "dateCreated": "2025-10-29T00:20:15+0000",
+      "status": "READY",
+      "$$hashKey": "object:30386"
+    }
+  ],
+  "name": "BristolCityCouncilPropertyExample_Zeppelin",
+  "id": "2M9YEM7NK",
+  "defaultInterpreterGroup": "livy2",
+  "version": "0.10.1.5.1.8.11",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/ss01shh/BristolCityCouncilPropertyExample_Zeppelin"
+}
