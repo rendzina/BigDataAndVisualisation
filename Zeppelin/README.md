@@ -27,12 +27,11 @@ Apache Zeppelin is an open-source web-based notebook that enables data-driven, i
 
 ### Setting Up Zeppelin
 
-1. **Install Zeppelin**:
-   ```bash
-   # Download and extract Zeppelin
-   wget https://downloads.apache.org/zeppelin/zeppelin-0.10.1/zeppelin-0.10.1-bin-all.tgz
-   tar -xzf zeppelin-0.10.1-bin-all.tgz
-   cd zeppelin-0.10.1-bin-all
+1. **Access Zeppelin Notebooks**:
+   - Navigate to your HDInsight cluster
+   - Click on "Cluster dashboards"
+   - Select "Zeppelin notebook"
+   - Use your cluster credentials to log in
    ```
 
 2. **Start Zeppelin Server**:
@@ -197,3 +196,7 @@ These notebooks support learning in:
 **S. Hallett**  
 Course: MK:U, Big Data and Visualisation  
 Date: 29/10/2025
+
+---
+
+*All notebooks use UK spelling conventions and follow PEP 8 coding standards for Python code.*

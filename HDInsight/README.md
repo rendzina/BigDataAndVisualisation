@@ -31,12 +31,11 @@ Azure HDInsight is a fully managed, full-spectrum, open-source analytics service
    - Configure cluster size and settings
    - Set up storage account
 
-2. **Access Jupyter and Zeppelin Notebooks**:
+2. **Access Jupyter Notebooks**:
    - Navigate to your HDInsight cluster
    - Click on "Cluster dashboards"
-   - Select "Jupyter notebook" or "Zeppelin Notebook"
+   - Select "Jupyter notebook"
    - Use your cluster credentials to log in
-   - Files are also provided for the Google Co-Lab server (independent of HDInsight)
 
 3. **Upload Notebooks**:
    - Download notebooks from this repository
@@ -165,3 +164,6 @@ These notebooks support learning in:
 Course: MK:U, Big Data and Visualisation  
 Date: 29/09/2025
 
+---
+
+*All notebooks use UK spelling conventions and follow PEP 8 coding standards for Python code.*
