@@ -24,42 +24,50 @@ Before running this project, ensure you have the following installed:
 ## Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone <repository-url>
    cd test-mongo
    ```
 
 2. **Create a virtual environment**:
+
    ```bash
    python3 -m venv venv
    ```
 
 3. **Activate the virtual environment**:
    - On macOS/Linux:
+
      ```bash
      source venv/bin/activate
      ```
+
    - On Windows:
+
      ```bash
      venv\Scripts\activate
      ```
 
 4. **Install required packages**:
+
    ```bash
    pip install pymongo pandas
    ```
 
 ## Project Structure
 
-```
+This directory contains **2 main files** for MongoDB integration:
+
+```text
 Python/
 ├── README.md                 # This documentation file
-├── access-mongo.py          # Main MongoDB integration script
+├── access-mongo.py           # Main MongoDB integration script
 ├── pyMongo_cursor_prompts.md # MongoDB cursor and query examples
-├── data/                    # Data directory (if applicable)
-│   └── noise_mapping_round_3.csv  # Environmental noise mapping dataset
-└── venv/                    # Virtual environment (created during setup)
+└── venv/                     # Virtual environment (created during setup)
 ```
+
+> **📋 Important Note**: The script expects a `data/` directory containing `noise_mapping_round_3.csv`. This file is not included in the repository. You can download it from the [UK Government Data Portal](https://www.data.gov.uk/dataset/d461bbc1-eb51-4852-8a9a-45dbf28aa230/noise-exposure-data-round-3) and place it in a `data/` subdirectory within the `Python/` folder.
 
 ## Data Sources and Formats
 
@@ -67,9 +75,9 @@ Python/
 
 The project primarily works with environmental noise mapping data that includes the following fields:
 
-- `Location/Agglomeration`: Geographic location name
-- `Road_Pop_Lden>=55dB`: Population exposed to road noise at 55dB or higher
-- `Road_Pop_Lnight>=50dB`: Population exposed to road noise at night at 50dB or higher
+- `Location/Agglomeration`:  Geographic location name
+- `Road_Pop_Lden>=55dB`:     Population exposed to road noise at 55dB or higher
+- `Road_Pop_Lnight>=50dB`:   Population exposed to road noise at night at 50dB or higher
 - `Railways_Pop_Lden>=55dB`: Population exposed to railway noise at 55dB or higher
 - `Industry_Pop_Lden>=55dB`: Population exposed to industrial noise at 55dB or higher
 - `AgglomerationPopulation`: Total population of the agglomeration
@@ -83,7 +91,15 @@ The project primarily works with environmental noise mapping data that includes 
 
 ## Usage
 
-### 1. Loading Data
+### 1. Prepare Data
+
+Before loading data, you need to download the CSV file:
+
+1. **Download the dataset**: Visit the [UK Government Data Portal](https://www.data.gov.uk/dataset/d461bbc1-eb51-4852-8a9a-45dbf28aa230/noise-exposure-data-round-3) and download the noise mapping data
+2. **Create data directory**: Create a `data/` folder within the `Python/` directory
+3. **Place CSV file**: Save the downloaded file as `noise_mapping_round_3.csv` in the `data/` folder
+
+### 2. Loading Data
 
 To load the CSV data into MongoDB:
 
@@ -93,12 +109,13 @@ load_csv_to_mongodb()
 ```
 
 This will:
+
 - Connect to MongoDB
 - Clear any existing data in the `noise_mapping` collection
 - Load data from `data/noise_mapping_round_3.csv`
 - Insert all records into the collection
 
-### 2. Running Queries
+### 3. Running Queries
 
 The main script demonstrates querying for documents where the location name starts with 'M':
 
@@ -107,12 +124,13 @@ python access-mongo.py
 ```
 
 This will:
+
 - Display the structure of documents in the collection
 - Show the total number of documents
 - Query for documents where `Location/Agglomeration` starts with 'M'
 - Display the matching documents
 
-### 3. Customising Queries
+### 4. Customising Queries
 
 You can modify the query in the `main()` function to search for different criteria:
 
@@ -160,8 +178,10 @@ This project is designed for educational purposes and demonstrates:
    - Verify your MongoDB installation
 
 2. **CSV File Not Found**
-   - Ensure the `data/noise_mapping_round_3.csv` file exists
-   - Check the file path is correct
+   - Download the CSV file from the [UK Government Data Portal](https://www.data.gov.uk/dataset/d461bbc1-eb51-4852-8a9a-45dbf28aa230/noise-exposure-data-round-3)
+   - Create a `data/` directory in the `Python/` folder
+   - Place the downloaded file as `noise_mapping_round_3.csv` in the `data/` directory
+   - Verify the file path is correct
 
 3. **Virtual Environment Issues**
    - Make sure the virtual environment is activated
@@ -179,18 +199,21 @@ If you encounter issues:
 ## Advanced Features
 
 ### MongoDB Aggregation Pipelines
+
 - Complex data transformation workflows
 - Multi-stage data processing
 - Performance optimisation techniques
 - Advanced query patterns
 
 ### Data Visualisation
+
 - Interactive charts and graphs
 - Geographic data mapping
 - Real-time data dashboards
 - Custom visualisation components
 
 ### API Integration
+
 - RESTful API development
 - Real-time data streaming
 - External service integration
@@ -218,4 +241,4 @@ Date: 18/06/2025
 
 ---
 
-*This README uses UK spelling conventions and code PEP8 conventions. It provides comprehensive documentation for students learning about Python, MongoDB, and data handling.* 
+*This README uses UK spelling conventions and code PEP8 conventions. It provides comprehensive documentation for students learning about Python, MongoDB, and data handling.*

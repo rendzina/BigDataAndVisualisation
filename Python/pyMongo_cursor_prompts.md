@@ -6,7 +6,7 @@
 
 > Create a virtual environment for a python project
 
-*Cursor offers these commands in turn*
+*Cursor offers these commands in turn - first create a viurtual environment with venv*
 **python3 -m venv venv**
 **source venv/bin/activate**
 
@@ -23,10 +23,10 @@
 
 *python access-mongo.py is updated*
 
-> Now adapt the code to add an initial function to load into the database collection 'noise_mapping' the data from the csv in the data folder called 'noise_mapping_round_3.csv'. Delete any data that already exists in the collection first. Use the csv library to load the data.
+> Now adapt the code to add an initial function to load into the database collection 'noise_mapping'. This is the data from the csv, stored in the data folder in the file called 'noise_mapping_round_3.csv'. Delete any data that already exists in the collection first. Use the csv library to load the data.
 
 *python access-mongo.py is updated*
 
-> Now add full comments and a descriptive header suitable for students to understand, plus a fully documented README file
+> Now add full comments and also a descriptive header with content suitable for students to understand it easily, plus a fully documented README file
 
 *documentation is added*

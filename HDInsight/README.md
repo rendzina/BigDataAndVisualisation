@@ -44,6 +44,8 @@ Azure HDInsight is a fully managed, full-spectrum, open-source analytics service
 
 ## Available Notebooks
 
+This directory contains **2 specialised notebooks** for Azure HDInsight clusters:
+
 | File | Description | Learning Objectives |
 |------|-------------|-------------------|
 | **HelloWorld.ipynb** | Basic Spark introduction in HDInsight environment | • HDInsight cluster setup<br>• Spark context initialisation<br>• Basic data operations<br>• Cluster resource management |

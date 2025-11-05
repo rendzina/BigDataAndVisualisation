@@ -53,14 +53,17 @@ Apache Zeppelin is an open-source web-based notebook that enables data-driven, i
 
 ## Available Notebooks
 
+This directory contains **7 files** (4 Jupyter notebooks and 3 native Zeppelin format files):
+
 | File | Description | Format | Learning Objectives |
 |------|-------------|--------|-------------------|
 | **Hello World - Zeppelin.ipynb** | Basic Zeppelin introduction and setup | Jupyter format | • Zeppelin environment setup<br>• Basic data operations<br>• Interactive visualisations<br>• Multi-language support |
 | **Hello World - Zeppelin.zpln** | Native Zeppelin format of Hello World example | Zeppelin format | • Zeppelin-specific features<br>• Dynamic forms<br>• Collaborative features<br>• Export capabilities |
-| **HelloWorld..ipynb** | Alternative Hello World implementation | Jupyter format | • Different approaches<br>• Code organisation<br>• Documentation practices |
+| **HelloWorld.ipynb** | Alternative Hello World implementation | Jupyter format | • Different approaches<br>• Code organisation<br>• Documentation practices |
 | **HelloWorld.zpln** | Native Zeppelin format | Zeppelin format | • Zeppelin workflow<br>• Parameter handling<br>• Visualisation options |
 | **HelloWorld2.ipynb** | Advanced Hello World with additional features | Jupyter format | • Advanced techniques<br>• Error handling<br>• Performance optimisation |
-| **BristolCityCouncilPropertyExample_Zeppelin.zpln** | Complete property data analysis solution for Zeppelin | Native Zeppelin format | • Real-world data processing<br>• Property market analysis<br>• Interactive data exploration<br>• Collaborative analysis workflows<br>• Advanced visualisation techniques |
+| **BristolCityCouncilPropertyExample_Zeppelin.ipynb** | Complete property data analysis solution (Jupyter format) | Jupyter format | • Real-world data processing<br>• Property market analysis<br>• Interactive data exploration<br>• Collaborative analysis workflows<br>• Advanced visualisation techniques |
+| **BristolCityCouncilPropertyExample_Zeppelin.zpln** | Complete property data analysis solution (Native format) | Zeppelin format | • Real-world data processing<br>• Property market analysis<br>• Interactive data exploration<br>• Collaborative analysis workflows<br>• Advanced visualisation techniques |
 
 ## Key Features
 

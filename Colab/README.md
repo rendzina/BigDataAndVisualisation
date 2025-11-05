@@ -15,12 +15,13 @@ To use these notebooks:
 
 ## Available Notebooks
 
+This directory contains **8 interactive notebooks** designed for Google Colaboratory:
+
 | File | Description | Learning Objectives |
 |------|-------------|-------------------|
 | **Hello_World_CoLab.ipynb** | Basic Spark introduction and setup in Colab | • Spark environment configuration<br>• Basic data operations<br>• Colab-specific setup |
 | **BristolCityCouncilPropertyExample_colab.ipynb** | Complete solution for Bristol City Council property data analysis | • Real-world data processing<br>• Property market analysis<br>• Data cleaning and transformation<br>• Statistical analysis |
 | **Weekly_Fuel_PricesExample_colab.ipynb** | Fuel price analysis and trend visualisation | • Time series data analysis<br>• Price trend identification<br>• Data aggregation techniques<br>• Market analysis |
-| **Weekly_Fuel_PricesExample_colab_v2.ipynb** | Enhanced version with additional analysis features | • Advanced data processing<br>• Multiple visualisation techniques<br>• Comparative analysis<br>• Performance optimisation |
 | **EnvironmentalAPI.ipynb** | Environmental data analysis from API sources | • API integration<br>• JSON data processing<br>• Real-time data analysis<br>• Environmental metrics |
 | **Mapping.ipynb** | Geographic data visualisation and mapping | • Geographic data processing<br>• Map creation with Matplotlib/Basemap<br>• GeoPandas integration<br>• Spatial analysis |
 | **MongoDB_Aggregation_Example.ipynb** | MongoDB aggregation pipeline examples | • Database aggregation<br>• Complex queries<br>• Data transformation<br>• Performance analysis |
