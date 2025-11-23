@@ -1,4 +1,4 @@
-# Minard figure - brought to life
+# The Minard figure - brought to life
 
 ## Overview
 
@@ -67,6 +67,9 @@ The animation features a caricature of Napoleon that moves along the route, with
 
 - `minard_plot.png`: High-resolution static image (300 DPI)
 - `minard_animation.gif`: Animated GIF showing Napoleon's journey (400 frames, 10 fps)
+
+![Animated visualisation of Napoleon's campaign](minard_animation.gif)
+
 - `minard.mmd`: Mermaid diagram file representing the campaign flow
 
 ### Mermaid Visualisation
@@ -90,6 +93,8 @@ You can view and edit the Mermaid diagram by:
 1. Opening the file in the [Mermaid Live Editor](https://mermaid.live)
 2. Copying the contents of `minard.mmd` and pasting it into the editor
 3. The diagram will render automatically, and you can export it as PNG or SVG
+
+The Mermaid diagram file (`minard.mmd`) can be viewed and rendered using the [Mermaid Live Editor](https://mermaid.live).
 
 This provides a complementary view of the campaign data that emphasises the flow and sequence of events, making it easy to understand the progression of the campaign and the relationship between locations, troop numbers, and temperature.
 
