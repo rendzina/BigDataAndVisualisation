@@ -1,7 +1,7 @@
-﻿{
+{
   "paragraphs": [
     {
-      "text": "%md\n# Hello World\n## Example in Zeppelin",
+      "text": "%md\n# Hello World\n## Example in Zeppelin\n\nThis notebook runs in Apache Zeppelin (e.g. on an HDInsight cluster). It reads HVAC sensor sample data from the cluster storage, explores it with Spark DataFrames, and queries it with SQL.",
       "user": "anonymous",
       "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
