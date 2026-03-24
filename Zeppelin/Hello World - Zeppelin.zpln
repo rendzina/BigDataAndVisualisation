@@ -1,9 +1,8 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n# Hello World\n## Example in Zeppelin\n\nThis notebook runs in Apache Zeppelin (e.g. on an HDInsight cluster). It reads HVAC sensor sample data from the cluster storage, explores it with Spark DataFrames, and queries it with SQL.",
+      "text": "%md\n# Hello World\n## Apache Zeppelin\n\nThis note runs in **Apache Zeppelin** on the cluster (for example HDInsight). It reads **HVAC** sample data from `/HdiSamples/`, explores it with Spark **DataFrames**, registers a **temp view**, and runs **SQL** through `spark.sql`. A short overview explains how Spark is organised here; then you **inspect your session** before the imports and CSV read.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -24,31 +23,115 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<h1>Hello World</h1><br/>\n<h2>Example in Zeppelin</h2>\n<p>This notebook runs in Apache Zeppelin (e.g. on an HDInsight cluster). It reads HVAC sensor sample data from the cluster storage, explores it with Spark DataFrames, and queries it with SQL.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749653068156_1777745489",
-      "id": "paragraph_1749653068156_1777745489",
+      "jobName": "paragraph_1774383463516_76011027",
+      "id": "paragraph_1774383463516_76011027",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:1682"
+      "status": "READY",
+      "focus": true
+    },
+    {
+      "text": "%md\n## How Spark works here (reminder)\n\n**Apache Zeppelin** sends these paragraphs to Spark through **Livy**. The **driver** coordinates the job; **executors** on worker machines run **tasks** in parallel on **partitions** of the data.\n\n**Data is partitioned.** Large files are read in **chunks**; each chunk can be processed on a different executor. Storage on the cluster is typically under paths such as `/HdiSamples/`.\n\nAn **RDD** (**resilient distributed dataset**) is simply a dataset **split into partitions** across the cluster so work can run **in parallel** on many machines.\n\n**Lazy evaluation:** when you call `read.csv` or build a query, Spark often records **what** to do first; heavy work runs when you call an **action** (for example `count()`, `show()`, or `spark.sql(...).show()`).",
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {},
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1774383463516_98283485",
+      "id": "paragraph_1774383463516_98283485",
+      "dateCreated": "2025-06-11T14:44:28+0000",
+      "status": "READY",
+      "focus": true
+    },
+    {
+      "text": "%md\n## Inspect your Spark session\n\nThe **master** URL shows how Spark is deployed on this cluster (often `yarn` on HDInsight). **App name** helps you find this job in the Spark UI.",
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {},
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1774383463516_8942364",
+      "id": "paragraph_1774383463516_8942364",
+      "dateCreated": "2025-06-11T14:44:28+0000",
+      "status": "READY",
+      "focus": true
+    },
+    {
+      "text": "%livy2.pyspark\nprint(\"Spark version:\", spark.version)\nsc = spark.sparkContext\nprint(\"Master:\", sc.master)\nprint(\"App name:\", sc.appName)",
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {},
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1774383463516_91920315",
+      "id": "paragraph_1774383463516_91920315",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
       "text": "%md\n### Imports\n\nPySpark and Spark SQL modules. The **%livy2.pyspark** interpreter runs this paragraph on the cluster's Spark session.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -69,30 +152,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<h3>Imports</h3>\n<p>PySpark and Spark SQL modules. The <strong>%livy2.pyspark</strong> interpreter runs this paragraph on the cluster's Spark session.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_e766ff459035",
-      "id": "paragraph_e766ff459035",
+      "jobName": "paragraph_1774383463516_75432800",
+      "id": "paragraph_1774383463516_75432800",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:0c611b73"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\nfrom pyspark.sql import *\nfrom pyspark.sql.types import *",
+      "text": "%livy2.pyspark\nfrom pyspark.sql import *\nfrom pyspark.sql.types import *\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -111,116 +183,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749646792008_1018246863",
-      "id": "paragraph_1749646792008_1018246863",
+      "jobName": "paragraph_1774383463516_48302487",
+      "id": "paragraph_1774383463516_48302487",
       "dateCreated": "2025-06-11T12:59:52+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:47+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1683"
-    },
-    {
-      "text": "%md\n**Import** CSV and string I/O utilities (for working with raw text or CSV).",
-      "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
-      "progress": 0,
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9,
-        "editorHide": true,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Import</strong> CSV and string I/O utilities (for working with raw text or CSV).</p>"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_c098fa09f07c",
-      "id": "paragraph_c098fa09f07c",
-      "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:c6d23212"
-    },
-    {
-      "text": "%livy2.pyspark\nimport csv\nimport io\nfrom io import StringIO",
-      "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:47+0000",
-      "progress": 0,
-      "config": {
-        "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/python",
-        "fontSize": 9,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749646881088_1519494036",
-      "id": "paragraph_1749646881088_1519494036",
-      "dateCreated": "2025-06-11T13:01:21+0000",
-      "dateStarted": "2025-06-11T14:52:47+0000",
-      "dateFinished": "2025-06-11T14:52:48+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1684"
+      "status": "READY"
     },
     {
       "text": "%md\n**Read the HVAC CSV** from the cluster path into a Spark DataFrame. First row as header, schema inferred.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -241,30 +215,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Read the HVAC CSV</strong> from the cluster path into a Spark DataFrame. First row as header, schema inferred.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_89b23eae5911",
-      "id": "paragraph_89b23eae5911",
+      "jobName": "paragraph_1774383463516_93884711",
+      "id": "paragraph_1774383463516_93884711",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:c5abbc12"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\ncsvFile = spark.read.csv('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv', header=True, inferSchema=True)\n",
+      "text": "%livy2.pyspark\ncsvFile = spark.read.csv('/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv', header=True, inferSchema=True)",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:48+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -283,30 +246,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749646938674_1447505160",
-      "id": "paragraph_1749646938674_1447505160",
-      "dateCreated": "2025-06-11T13:02:18+0000",
-      "dateStarted": "2025-06-11T14:52:48+0000",
-      "dateFinished": "2025-06-11T14:52:49+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1685"
+      "jobName": "paragraph_1774383463516_92450772",
+      "id": "paragraph_1774383463516_92450772",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
       "text": "%md\n**Row count:** how many records in the DataFrame.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -327,30 +278,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Row count:</strong> how many records in the DataFrame.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1903f5e06ace",
-      "id": "paragraph_1903f5e06ace",
+      "jobName": "paragraph_1774383463516_44455563",
+      "id": "paragraph_1774383463516_44455563",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:33ccb1bd"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\n# How many rows in dataframe?\ncsvFile.count()",
+      "text": "%livy2.pyspark\n# How many rows in dataframe?\ncsvFile.count()\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:49+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -369,34 +309,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "8000"
-          },
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749653437373_1023047538",
-      "id": "paragraph_1749653437373_1023047538",
-      "dateCreated": "2025-06-11T14:50:37+0000",
-      "dateStarted": "2025-06-11T14:52:49+0000",
-      "dateFinished": "2025-06-11T14:52:50+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1686"
+      "jobName": "paragraph_1774383463516_40133442",
+      "id": "paragraph_1774383463516_40133442",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
       "text": "%md\n### HVAC dataset description\n\nThe **HVAC** (Heating, Ventilation, and Air Conditioning) sample data contains sensor readings from buildings: date and time, target and actual temperatures, system identifier, system age, and building ID. Below we explore the schema and a sample of the data before registering a temp view for SQL.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -417,30 +341,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<h3>HVAC dataset description</h3>\n<p>The <strong>HVAC</strong> (Heating, Ventilation, and Air Conditioning) sample data contains sensor readings from buildings: date and time, target and actual temperatures, system identifier, system age, and building ID. Below we explore the schema and a sample of the data before registering a temp view for SQL.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_4bc697399310",
-      "id": "paragraph_4bc697399310",
+      "jobName": "paragraph_1774383463516_77514843",
+      "id": "paragraph_1774383463516_77514843",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:900d82d0"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\n# Show the schema: column names and types inferred by Spark\ncsvFile.printSchema()",
+      "text": "%livy2.pyspark\n# Show the schema: column names and types inferred by Spark\ncsvFile.printSchema()\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -459,25 +372,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_33db74631d06",
-      "id": "paragraph_33db74631d06",
-      "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:e244d23b"
+      "jobName": "paragraph_1774383463516_5170314",
+      "id": "paragraph_1774383463516_5170314",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
-      "text": "%livy2.pyspark\n# Preview the first 10 rows\ncsvFile.show(10)",
+      "text": "%livy2.pyspark\n# Preview the first 10 rows\ncsvFile.show(10)\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -496,25 +402,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_cc368514e7ed",
-      "id": "paragraph_cc368514e7ed",
-      "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:798adfba"
+      "jobName": "paragraph_1774383463532_51254173",
+      "id": "paragraph_1774383463532_51254173",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
-      "text": "%livy2.pyspark\n# Summary statistics for numeric columns\ncsvFile.describe().show()",
+      "text": "%livy2.pyspark\n# Summary statistics for numeric columns\ncsvFile.describe().show()\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -533,25 +432,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_9bc91b2ddbfb",
-      "id": "paragraph_9bc91b2ddbfb",
-      "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:0750f0ef"
+      "jobName": "paragraph_1774383463532_20955853",
+      "id": "paragraph_1774383463532_20955853",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
-      "text": "%md\n### Register the DataFrame as a SQL temp view\n\nWe register `csvFile` as a temporary view so we can query it with Spark SQL in the following paragraphs.",
+      "text": "%md\n### Register the DataFrame as a SQL temp view\n\nWe register `csvFile` as a temporary view so we can query it with **`spark.sql(\"...\").show()`** in the following paragraphs. That uses the same SQL engine as the DataFrame API.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -572,30 +464,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<h3>Register the DataFrame as a SQL temp view</h3>\n<p>We register <code>csvFile</code> as a temporary view so we can query it with Spark SQL in the following paragraphs.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_87185aaeb3ff",
-      "id": "paragraph_87185aaeb3ff",
+      "jobName": "paragraph_1774383463532_43878019",
+      "id": "paragraph_1774383463532_43878019",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:bfdcb060"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\ncsvFile.createOrReplaceTempView(\"hvac_ss01shh\")",
+      "text": "%livy2.pyspark\ncsvFile.createOrReplaceTempView(\"hvac_ss01shh\")\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:51+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -614,30 +495,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749653457618_1572847781",
-      "id": "paragraph_1749653457618_1572847781",
-      "dateCreated": "2025-06-11T14:50:57+0000",
-      "dateStarted": "2025-06-11T14:52:51+0000",
-      "dateFinished": "2025-06-11T14:52:52+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1687"
+      "jobName": "paragraph_1774383463532_48903428",
+      "id": "paragraph_1774383463532_48903428",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
-      "text": "%md\n**Note on SQL:** Here we use **spark.sql(\"...\").show()** — the same API as in **Google Colab** (in Colab you use the same calls without the %livy2.pyspark line). In Zeppelin you can also use a **%livy2.sql** (or **%sql**) paragraph and write raw SQL; that is similar to **%%sql** in HDInsight. Both run the same SQL against the same Spark session.",
+      "text": "%md\n**SQL in this note:** Each query is a normal Python line inside a **`%livy2.pyspark`** paragraph: `spark.sql(\"...\").show()`. That is the same API as in the other course notebooks; there is no separate SQL-only paragraph type required here.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -658,30 +527,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Note on SQL:</strong> Here we use <strong>spark.sql(\"...\").show()</strong> — the same API as in <strong>Google Colab</strong> (in Colab you use the same calls without the %livy2.pyspark line). In Zeppelin you can also use a <strong>%livy2.sql</strong> (or <strong>%sql</strong>) paragraph and write raw SQL; that is similar to <strong>%%sql</strong> in HDInsight. Both run the same SQL against the same Spark session.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_39f45054dfd9",
-      "id": "paragraph_39f45054dfd9",
+      "jobName": "paragraph_1774383463532_21881661",
+      "id": "paragraph_1774383463532_21881661",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:6e4137b1"
+      "status": "READY",
+      "focus": true
     },
     {
       "text": "%md\n**Verify row count** with SQL (should match the DataFrame count above).",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -702,30 +560,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Verify row count</strong> with SQL (should match the DataFrame count above).</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_2edde4966118",
-      "id": "paragraph_2edde4966118",
+      "jobName": "paragraph_1774383463532_34104470",
+      "id": "paragraph_1774383463532_34104470",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:52501a15"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\nspark.sql(\"SELECT count(*) from hvac_ss01shh\").show()",
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT count(*) from hvac_ss01shh\").show()\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:52+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -744,34 +591,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+--------+\n|count(1)|\n+--------+\n|    8000|\n+--------+"
-          },
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749647736655_76757981",
-      "id": "paragraph_1749647736655_76757981",
-      "dateCreated": "2025-06-11T13:15:36+0000",
-      "dateStarted": "2025-06-11T14:52:52+0000",
-      "dateFinished": "2025-06-11T14:52:53+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1688"
+      "jobName": "paragraph_1774383463532_14314818",
+      "id": "paragraph_1774383463532_14314818",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
       "text": "%md\n**Describe the table** to see column names and types.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -792,30 +623,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Describe the table</strong> to see column names and types.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_9895136cf6b8",
-      "id": "paragraph_9895136cf6b8",
+      "jobName": "paragraph_1774383463532_87637064",
+      "id": "paragraph_1774383463532_87637064",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:aa148846"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\nspark.sql(\"DESCRIBE TABLE hvac_ss01shh\").show()",
+      "text": "%livy2.pyspark\nspark.sql(\"DESCRIBE TABLE hvac_ss01shh\").show()\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:53+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -834,34 +654,18 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+----------+---------+-------+\n|  col_name|data_type|comment|\n+----------+---------+-------+\n|      Date|   string|   null|\n|      Time|timestamp|   null|\n|TargetTemp|      int|   null|\n|ActualTemp|      int|   null|\n|    System|      int|   null|\n| SystemAge|      int|   null|\n|BuildingID|      int|   null|\n+----------+---------+-------+"
-          },
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749653487748_591030708",
-      "id": "paragraph_1749653487748_591030708",
-      "dateCreated": "2025-06-11T14:51:27+0000",
-      "dateStarted": "2025-06-11T14:52:53+0000",
-      "dateFinished": "2025-06-11T14:52:54+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1689"
+      "jobName": "paragraph_1774383463532_55217979",
+      "id": "paragraph_1774383463532_55217979",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     },
     {
-      "text": "%md\n**Example query:** temperature difference (target − actual) for a given date. Positive = heating; negative = cooling.",
+      "text": "%md\n**Example query:** temperature difference (target minus actual) for a given date. Positive = heating; negative = cooling.",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -882,30 +686,19 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<p><strong>Example query:</strong> temperature difference (target − actual) for a given date. Positive = heating; negative = cooling.</p>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_8e28d82c589a",
-      "id": "paragraph_8e28d82c589a",
+      "jobName": "paragraph_1774383463532_79891587",
+      "id": "paragraph_1774383463532_79891587",
       "dateCreated": "2025-06-11T14:44:28+0000",
-      "dateStarted": "2025-06-11T14:52:46+0000",
-      "dateFinished": "2025-06-11T14:52:46+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:253025f9"
+      "status": "READY",
+      "focus": true
     },
     {
-      "text": "%livy2.pyspark\nspark.sql(\"SELECT `buildingID`, (targettemp - actualtemp) AS `temp_diff`, date FROM hvac_ss01shh WHERE date = '6/1/13'\").show()",
+      "text": "%livy2.pyspark\nspark.sql(\"SELECT `buildingID`, (targettemp - actualtemp) AS `temp_diff`, date FROM hvac_ss01shh WHERE date = '6/1/13'\").show()\n",
       "user": "anonymous",
-      "dateUpdated": "2025-06-11T14:52:54+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -924,29 +717,14 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+----------+---------+------+\n|buildingID|temp_diff|  date|\n+----------+---------+------+\n|         4|        8|6/1/13|\n|         3|        2|6/1/13|\n|         7|      -10|6/1/13|\n|        12|        3|6/1/13|\n|         7|        9|6/1/13|\n|         7|        5|6/1/13|\n|         3|       11|6/1/13|\n|         8|       -7|6/1/13|\n|        17|       14|6/1/13|\n|        16|       -3|6/1/13|\n|         8|       -8|6/1/13|\n|         1|       -1|6/1/13|\n|        12|       11|6/1/13|\n|         3|       14|6/1/13|\n|         6|       -4|6/1/13|\n|         1|        4|6/1/13|\n|        19|        4|6/1/13|\n|        19|       12|6/1/13|\n|         9|       -9|6/1/13|\n|        15|      -10|6/1/13|\n+----------+---------+------+\nonly showing top 20 rows"
-          },
-          {
-            "type": "HTML",
-            "data": "<hr/>Spark Application Id: application_1749630074638_0042<br/>Spark WebUI: <a href=\"http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/\">http://hn1-bdv.qtdqknjrzczu5btq2tv1umkuhd.bx.internal.cloudapp.net:8088/proxy/application_1749630074638_0042/</a>"
-          }
-        ]
-      },
+      "results": {},
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1749653507447_2133330507",
-      "id": "paragraph_1749653507447_2133330507",
-      "dateCreated": "2025-06-11T14:51:47+0000",
-      "dateStarted": "2025-06-11T14:52:54+0000",
-      "dateFinished": "2025-06-11T14:52:55+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:1690"
+      "jobName": "paragraph_1774383463532_59045446",
+      "id": "paragraph_1774383463532_59045446",
+      "dateCreated": "2025-06-11T12:59:52+0000",
+      "status": "READY"
     }
   ],
   "name": "Hello World - Zeppelin",
