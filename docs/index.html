@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unit 2 Recap — Big Data & Spark Chain Game</title>
+  <style>
+    :root {
+      --bg: #0c1520;
+      --surface: #132433;
+      --elevated: #1a3148;
+      --text: #e8f1f8;
+      --muted: #8fa8bc;
+      --accent: #e8a54b;
+      --accent-dim: #c77d2a;
+      --ok: #4fcf8a;
+      --warn: #ff6b6b;
+      --ring: rgba(232, 165, 75, 0.45);
+      --font: "Segoe UI", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      background: radial-gradient(1200px 800px at 10% 0%, #142a40 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 2.5rem;
+    }
+
+    header {
+      border-bottom: 1px solid var(--elevated);
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    header h1 {
+      margin: 0 0 0.35rem;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .header-lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .tabs-wrap {
+      background: linear-gradient(165deg, var(--surface) 0%, #162d44 100%);
+      border: 1px solid var(--elevated);
+      border-radius: 14px;
+      padding: 0.75rem 0.85rem 0.85rem;
+      margin: 1rem 0 1.15rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .tabs-label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.55rem;
+      font-weight: 700;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .tabs button {
+      background: rgba(26, 49, 72, 0.85);
+      color: var(--text);
+      border: 2px solid var(--elevated);
+      padding: 0.78rem 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      flex: 1 1 auto;
+      min-width: 11rem;
+      transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.12s;
+    }
+
+    .tabs button:hover {
+      border-color: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .tabs button[aria-pressed="true"] {
+      background: var(--elevated);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--ring), 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .panel {
+      display: none;
+      animation: fade 0.25s ease;
+    }
+
+    .panel.is-active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hint {
+      background: var(--surface);
+      border: 1px solid var(--elevated);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hint strong {
+      color: var(--accent);
+    }
+
+    .hint-pipeline .hint-steps {
+      margin: 0.65rem 0 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .hint-pipeline .hint-steps li {
+      margin-bottom: 0.4rem;
+    }
+
+    .hint-pipeline .hint-steps li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Post-check pipeline concept chart */
+    .pipeline-chart-wrap {
+      display: none;
+      margin-top: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--elevated);
+      border-radius: 14px;
+      padding: 1.15rem 1rem 1.35rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .pipeline-chart-wrap.is-visible {
+      display: block;
+    }
+
+    .pipeline-chart-wrap .pipeline-chart-title {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+      font-weight: 650;
+      color: var(--accent);
+    }
+
+    .pipeline-chart-wrap .pipeline-chart-sub {
+      margin: 0 0 1.1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .chart-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .chart-node {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: var(--elevated);
+      border: 1px solid rgba(232, 165, 75, 0.22);
+      border-radius: 10px;
+      padding: 0.65rem 0.9rem;
+    }
+
+    .chart-node-num {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #1a1208;
+      font-weight: 800;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chart-node-text {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      padding-top: 0.12rem;
+    }
+
+    .chart-node-text strong {
+      color: var(--text);
+    }
+
+    .chart-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.1rem;
+      position: relative;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .chart-arrow::before {
+      content: "";
+      position: absolute;
+      left: 1.5rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-dim), rgba(232, 165, 75, 0.35));
+      border-radius: 1px;
+    }
+
+    .chart-arrow-inner {
+      position: relative;
+      z-index: 1;
+      margin-left: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.35;
+      max-width: 480px;
+      background: var(--bg);
+      padding: 0.4rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid var(--elevated);
+    }
+
+    .chart-arrow-inner strong {
+      color: #c2d4e4;
+    }
+
+    /* Pipeline game */
+    .pipeline-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 900px) {
+      .pipeline-layout {
+        grid-template-columns: 1fr 280px;
+        align-items: start;
+      }
+    }
+
+    .slots {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .slot-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 0.65rem;
+      align-items: stretch;
+    }
+
+    .slot-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px dashed var(--elevated);
+      border-radius: 8px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .slot {
+      min-height: 56px;
+      background: rgba(26, 49, 72, 0.55);
+      border: 2px dashed var(--elevated);
+      border-radius: 10px;
+      padding: 6px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .slot.drag-over {
+      border-color: var(--accent);
+      background: rgba(232, 165, 75, 0.08);
+    }
+
+    .slot.result-ok {
+      border-color: var(--ok);
+      border-style: solid;
+    }
+
+    .slot.result-bad {
+      border-color: var(--warn);
+      border-style: solid;
+    }
+
+    .bank {
+      background: var(--surface);
+      border: 1px solid var(--elevated);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .bank h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .bank-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .card {
+      background: var(--elevated);
+      border: 1px solid rgba(232, 165, 75, 0.25);
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.82rem;
+      cursor: grab;
+      max-width: 100%;
+      touch-action: none;
+      user-select: none;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+
+    .card:active {
+      cursor: grabbing;
+    }
+
+    .card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #1a1208;
+      border: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      font-weight: 650;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--elevated);
+    }
+
+    .feedback {
+      margin-top: 0.75rem;
+      font-size: 0.92rem;
+      min-height: 1.5em;
+    }
+
+    .feedback.ok { color: var(--ok); }
+    .feedback.bad { color: var(--warn); }
+
+    /* Concept map */
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .node {
+      background: var(--surface);
+      border: 1px solid var(--elevated);
+      border-radius: 10px;
+      padding: 0.85rem;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .node:hover {
+      border-color: var(--accent-dim);
+      background: var(--elevated);
+    }
+
+    .node h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .node p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Detail drawer */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 10, 16, 0.72);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 40;
+    }
+
+    .backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: min(420px, 100vw);
+      background: var(--surface);
+      border-left: 1px solid var(--elevated);
+      z-index: 50;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      overflow-y: auto;
+      padding: 1.25rem;
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .drawer.is-open {
+      transform: translateX(0);
+    }
+
+    .drawer h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .drawer .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .drawer p {
+      margin: 0 0 0.85rem;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .drawer .links {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--elevated);
+    }
+
+    .drawer a {
+      color: #7ec8ff;
+      word-break: break-all;
+    }
+
+    .drawer .close {
+      position: absolute;
+      top: 0.85rem;
+      right: 1rem;
+      background: transparent;
+      border: 1px solid var(--elevated);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .drawer .links span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    /* Spark stack mini-game */
+    .stack-horizontal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: stretch;
+      margin-bottom: 1rem;
+    }
+
+    .stack-slot {
+      flex: 1 1 140px;
+      min-height: 64px;
+      border: 2px dashed var(--elevated);
+      border-radius: 10px;
+      padding: 6px;
+    }
+
+    .stack-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .stack-labels small {
+      color: var(--muted);
+      width: 100%;
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--elevated);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Unit 2 recap — connect the big data story</h1>
+      <div class="tabs-wrap">
+        <span class="tabs-label">Choose an activity</span>
+        <div class="tabs" role="tablist" aria-label="Activity modes">
+          <button type="button" role="tab" id="tab-pipeline" aria-selected="true" aria-controls="panel-pipeline">1. Build the pipeline</button>
+          <button type="button" role="tab" id="tab-stack" aria-selected="false" aria-controls="panel-stack">2. Spark stack order</button>
+          <button type="button" role="tab" id="tab-map" aria-selected="false" aria-controls="panel-map">3. Concept map</button>
+        </div>
+      </div>
+      <p class="header-lead">Work from the three Vs through Spark to <strong>managed Spark</strong> (e.g. HDInsight) and <strong>notebook IDEs</strong> (Jupyter, Colab) where you execute code. Drag tiles into order, or click a tile for definitions and links.</p>
+    </header>
+
+    <section id="panel-pipeline" class="panel is-active" role="tabpanel" aria-labelledby="tab-pipeline">
+      <div class="hint hint-pipeline">
+        <strong>What you are doing:</strong> you are rebuilding the <em>story of Unit 2</em> — not random buzzwords. Each step should follow logically from the last: why big data is hard, how we scaled storage and compute, what Hadoop did, why lakes matter, where Spark sits, what sits inside Spark, what you code in, then <strong>managed Spark in the cloud</strong> (HDInsight) versus <strong>notebook IDEs</strong> (Jupyter, Colab) where you run code.
+        <ul class="hint-steps">
+          <li><strong>Drag</strong> one tile at a time from the <strong>Card bank</strong> into the numbered row (row <strong>1</strong> = first idea in the story, row <strong>9</strong> = last).</li>
+          <li>Each numbered row must contain <strong>exactly one</strong> tile. To swap, drop a new tile onto a row that already has one — they exchange places.</li>
+          <li>When everyone is ready, press <strong>Check order</strong>. Correct rows turn <strong>green</strong>; misplaced rows turn <strong>red</strong> so you can fix only what is wrong.</li>
+          <li>After you check, a <strong>reference diagram</strong> appears below showing how the concepts link — use it to discuss as a group, even if a few rows were wrong at first.</li>
+          <li><strong>Shuffle bank</strong> jumbles only the bank (for another go). <strong>Reset all</strong> clears every row back into the bank.</li>
+        </ul>
+      </div>
+      <div class="pipeline-layout">
+        <div>
+          <div class="slots" id="slots"></div>
+          <div class="actions">
+            <button type="button" class="btn" id="check-pipeline">Check order</button>
+            <button type="button" class="btn secondary" id="shuffle-pipeline">Shuffle bank</button>
+            <button type="button" class="btn secondary" id="reset-pipeline">Reset all</button>
+          </div>
+          <p class="feedback" id="pipeline-feedback" aria-live="polite"></p>
+          <div class="pipeline-chart-wrap" id="pipeline-chart" aria-live="polite"></div>
+        </div>
+        <div class="bank">
+          <h2>Card bank</h2>
+          <div class="bank-cards" id="bank"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-stack" class="panel" role="tabpanel" aria-labelledby="tab-stack" hidden>
+      <div class="hint">
+        <strong>Spark from the metal up:</strong> place the four layers left → right as if building a stack from the floor upward. <strong>Left</strong> = physical cluster and executors; then <strong>who orchestrates</strong> work (driver + cluster manager); then <strong>Spark Core / RDD</strong> (the engine layer); <strong>right</strong> = <strong>PySpark &amp; Spark SQL</strong> (what you actually write). Click any tile for definitions and external links.
+      </div>
+      <div class="stack-labels">
+        <small>Target order (left = bottom of stack, right = top)</small>
+      </div>
+      <div class="stack-horizontal" id="stack-slots"></div>
+      <div class="bank">
+        <h2>Stack tiles</h2>
+        <div class="bank-cards" id="stack-bank"></div>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="check-stack">Check stack</button>
+        <button type="button" class="btn secondary" id="shuffle-stack">Shuffle</button>
+      </div>
+      <p class="feedback" id="stack-feedback" aria-live="polite"></p>
+      <div class="pipeline-chart-wrap" id="stack-chart" aria-live="polite"></div>
+    </section>
+
+    <section id="panel-map" class="panel" role="tabpanel" aria-labelledby="tab-map" hidden>
+      <div class="hint">
+        <strong>Glossary play:</strong> click a card to open the side panel — same content as the draggable tiles, useful for revision before class discussion.
+      </div>
+      <div class="map-grid" id="concept-map"></div>
+    </section>
+
+    <footer>
+      Facilitator tip: debrief each step after a correct pipeline — ask “what breaks if this step is missing?” Updated 27 March 2026.
+    </footer>
+  </div>
+
+  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawer-title">
+    <button type="button" class="close" id="drawer-close" aria-label="Close panel">&times;</button>
+    <div class="tag" id="drawer-tag"></div>
+    <h2 id="drawer-title"></h2>
+    <p id="drawer-body"></p>
+    <div class="links" id="drawer-links"></div>
+  </aside>
+
+  <script>
+    /**
+     * Unit 2 recap data — definitions use UK English where relevant.
+     */
+    const CONCEPTS = {
+      three_vs: {
+        title: "The three Vs",
+        tag: "Problem framing",
+        summary: "Volume, velocity, and variety — why ‘one big machine’ stops working.",
+        body: "Volume pushes storage beyond a single disk; velocity needs near–real-time ingestion and processing; variety breaks tidy relational schemas. Together they motivate **distributed** systems: many nodes share compute and storage so cost and throughput scale out instead of up.",
+        links: [
+          { label: "IBM — what are big data’s Vs?", url: "https://www.ibm.com/topics/what-is-big-data" },
+        ],
+      },
+      compute_storage: {
+        title: "Compute + storage at scale",
+        tag: "Infrastructure idea",
+        summary: "Separate worries: keep bits durably, move work to the data.",
+        body: "Large datasets need **fault-tolerant** storage (replicated blocks) and **parallel** compute (many tasks on many cores). The design pattern is: split data, schedule tasks, aggregate results — which is exactly what HDFS-style storage and processing frameworks exploit.",
+        links: [
+          { label: "AWS — data lake storage concepts", url: "https://aws.amazon.com/what-is/data-lake/" },
+        ],
+      },
+      hadoop_mr: {
+        title: "Hadoop & MapReduce",
+        tag: "Generation 1",
+        summary: "HDFS holds data; MapReduce codes the map–shuffle–reduce pattern.",
+        body: "**Hadoop** often means HDFS plus YARN plus an execution model. **MapReduce** expresses batch jobs as parallel maps and reduces with disk-heavy stages between them. It fits huge, fault-tolerant batch analytics but can be high-latency for iterative or interactive work.",
+        links: [
+          { label: "Apache Hadoop", url: "https://hadoop.apache.org/" },
+        ],
+      },
+      data_lake: {
+        title: "Data lake",
+        tag: "Architecture",
+        summary: "Cheap landing zone for raw and diverse data — schema on read.",
+        body: "A **data lake** stores structured and unstructured data in native formats before strict modelling. It supports exploratory analytics and feeds engines like Spark that can read many formats. Governance (catalogues, lineage) matters so it does not become a ‘data swamp’.",
+        links: [
+          { label: "Azure — data lake overview", url: "https://azure.microsoft.com/en-gb/solutions/data-lake/" },
+        ],
+      },
+      apache_spark: {
+        title: "Apache Spark",
+        tag: "Unified engine",
+        summary: "In-memory, DAG-based engine: batch, SQL, streaming, ML, graph.",
+        body: "Spark keeps working sets in memory where possible, avoids repeated disk writes between iterations, and offers one runtime for several workloads. It commonly runs **on top of** data in a lake or HDFS and can coexist with or replace MapReduce-style jobs.",
+        links: [
+          { label: "Apache Spark documentation", url: "https://spark.apache.org/docs/latest/" },
+        ],
+      },
+      spark_core_rdd: {
+        title: "Spark Core & RDD",
+        tag: "Abstraction",
+        summary: "RDD: resilient distributed dataset — the low-level parallel collection.",
+        body: "**Spark Core** schedules tasks, memory, and fault recovery. An **RDD** is an immutable, partitioned collection you transform with operations; lineage lets Spark recompute lost partitions. Higher-level APIs (DataFrames/Datasets) build on this with optimisers.",
+        links: [
+          { label: "RDD programming guide", url: "https://spark.apache.org/docs/latest/rdd-programming-guide.html" },
+        ],
+      },
+      pyspark_sparksql: {
+        title: "PySpark & Spark SQL",
+        tag: "Developer surface",
+        summary: "Python API and SQL on structured data (DataFrames, relational queries).",
+        body: "**PySpark** is Spark’s Python API — good for notebooks and ML stacks you already use. **Spark SQL** adds relational queries, the DataFrame API, and integration with Hive metastores. Both compile to the same underlying plan as Scala/Java jobs.",
+        links: [
+          { label: "PySpark docs", url: "https://spark.apache.org/docs/latest/api/python/" },
+          { label: "Spark SQL guide", url: "https://spark.apache.org/docs/latest/sql-programming-guide.html" },
+        ],
+      },
+      azure_hdinsight: {
+        title: "Azure HDInsight",
+        tag: "Managed Spark",
+        summary: "Azure managed service — hosted Spark (and other) clusters you do not patch yourself.",
+        body: "**HDInsight** is a **managed** analytics service: Microsoft operates the **cluster** fabric while you submit **Spark** (and Hadoop ecosystem) workloads. It is **not** the same as a notebook app — it is the **runtime environment** in the cloud where Spark executors can run, often reached from tools like **Jupyter** or Azure Synapse-related setups.",
+        links: [
+          { label: "Azure HDInsight", url: "https://azure.microsoft.com/en-gb/products/hdinsight" },
+          { label: "Azure — what is HDInsight?", url: "https://learn.microsoft.com/en-gb/azure/hdinsight/hdinsight-overview" },
+        ],
+      },
+      jupyter_colab: {
+        title: "Jupyter & Google Colab",
+        tag: "Notebook IDEs",
+        summary: "Interactive notebook environments to edit, run, and document code — not the cluster manager.",
+        body: "**Jupyter Notebook** (and JupyterLab) are **IDE-style** notebook UIs: cells of code and markdown, inline outputs, kernels that execute Python or other languages. **Google Colab** is Google’s hosted notebook service with free/pre-emptible GPUs/CPUs. Both are **where you type and run** PySpark or practice — they may **connect to** a remote Spark cluster (e.g. via spark-submit or Livy) or run a **local** Spark in learning mode; neither replaces **HDInsight** as the managed cluster service.",
+        links: [
+          { label: "Jupyter Project", url: "https://jupyter.org/" },
+          { label: "Google Colab", url: "https://colab.research.google.com/" },
+        ],
+      },
+    };
+
+    const PIPELINE_ORDER = [
+      "three_vs",
+      "compute_storage",
+      "hadoop_mr",
+      "data_lake",
+      "apache_spark",
+      "spark_core_rdd",
+      "pyspark_sparksql",
+      "azure_hdinsight",
+      "jupyter_colab",
+    ];
+
+    /** Optional fixed order for the concept map grid (all glossary entries). */
+    const CONCEPT_MAP_ORDER = [...PIPELINE_ORDER];
+
+    const STACK_CONCEPTS = {
+      cluster: {
+        title: "Cluster & executors",
+        tag: "Foundation",
+        body: "**Worker nodes** in the cluster host **executors** — JVM processes that hold memory for caching and run the **tasks** Spark assigns. Without this pool of machines and CPU/RAM, nothing parallel can run.",
+        links: [
+          { label: "Spark — cluster overview", url: "https://spark.apache.org/docs/latest/cluster-overview.html" },
+        ],
+      },
+      driver_orchestration: {
+        title: "Driver & cluster manager",
+        tag: "Orchestration",
+        body: "The **driver** runs your program’s main logic, holds the **SparkSession**, and translates your code into stages and tasks. The **cluster manager** (YARN, Kubernetes, Mesos, or Spark Standalone) **negotiates resources** and places executors on workers so tasks are scheduled fairly across the cluster.",
+        links: [
+          { label: "Spark — cluster overview (driver & executors)", url: "https://spark.apache.org/docs/latest/cluster-overview.html" },
+          { label: "Spark — submitting applications", url: "https://spark.apache.org/docs/latest/submitting-applications.html" },
+        ],
+      },
+      core_rdd: {
+        title: "Spark Core / RDD",
+        tag: "Engine layer",
+        body: "**Spark Core** is the execution engine: DAG scheduling, shuffles, fault recovery. **RDDs** are partitioned, immutable collections with **lineage** so lost partitions can be recomputed — the low-level building block beneath DataFrames.",
+        links: [
+          { label: "RDD programming guide", url: "https://spark.apache.org/docs/latest/rdd-programming-guide.html" },
+        ],
+      },
+      apis: {
+        title: "PySpark & Spark SQL",
+        tag: "Your code",
+        body: "**PySpark** exposes Spark from Python; **Spark SQL** adds relational queries and the **DataFrame** API. Your notebook code here is turned into the same distributed job as an equivalent Scala program.",
+        links: [
+          { label: "PySpark documentation", url: "https://spark.apache.org/docs/latest/api/python/" },
+          { label: "Spark SQL guide", url: "https://spark.apache.org/docs/latest/sql-programming-guide.html" },
+        ],
+      },
+    };
+
+    const STACK_ORDER = ["cluster", "driver_orchestration", "core_rdd", "apis"];
+
+    /** Connector lines between pipeline steps (seven arrows between eight nodes). */
+    const PIPELINE_LINK_TEXTS = [
+      "The three **Vs** mean data is too big, fast, and messy for one box — hence **distributed storage** and **parallel compute**.",
+      "That scale is what **Hadoop-era** stacks addressed with replicated files (**HDFS**) and **MapReduce** batch jobs.",
+      "Today, huge volumes of raw files often land in a **data lake** (many formats, schema-on-read).",
+      "Engines such as **Apache Spark** read that data (and other sources) for analytics, ETL, and ML.",
+      "Spark’s work is executed through **Spark Core**: task scheduling, shuffles, and **RDD** semantics.",
+      "Most teaching and practice uses **PySpark** or **Spark SQL** — higher-level APIs that still compile down to Core.",
+      "In Azure, **HDInsight** is a **managed service** that hosts **Spark clusters** for you — operational fabric, not your notebook editor.",
+      "**Jupyter** and **Google Colab** are **notebook IDEs**: where you **write and execute** code — they may **connect to** a cluster (or run a small local Spark), separate from **HDInsight**’s role as managed infrastructure.",
+    ];
+
+    /** Connectors between Spark stack layers (three links for four nodes). */
+    const STACK_LINK_TEXTS = [
+      "**Executors** live on workers here; the **driver** and **cluster manager** sit above this layer and **request** CPU/memory slots to launch those executors.",
+      "The **driver** turns your job into a **DAG** of **stages** and **tasks**; **Spark Core** is what **runs** those tasks and **shuffles** data between partitions.",
+      "**PySpark** / **Spark SQL** expressions are **desugared** into Core operations — same distributed plan whether you typed Python, SQL, or Scala.",
+    ];
+
+    let draggedEl = null;
+    /** Avoid opening the drawer when the browser emits a click right after a drag. */
+    let suppressCardClickUntil = 0;
+
+    function parseBold(text) {
+      const frag = document.createDocumentFragment();
+      const parts = text.split(/\*\*(.+?)\*\*/g);
+      parts.forEach((part, i) => {
+        if (i % 2 === 1) {
+          const strong = document.createElement("strong");
+          strong.textContent = part;
+          frag.appendChild(strong);
+        } else if (part) {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      return frag;
+    }
+
+    function openDrawer(key, source = CONCEPTS) {
+      const c = source[key];
+      if (!c) return;
+      document.getElementById("drawer-tag").textContent = c.tag || "";
+      document.getElementById("drawer-title").textContent = c.title;
+      const bodyEl = document.getElementById("drawer-body");
+      bodyEl.textContent = "";
+      bodyEl.appendChild(parseBold(c.body || c.summary || ""));
+      const linksEl = document.getElementById("drawer-links");
+      linksEl.textContent = "";
+      if (c.links && c.links.length) {
+        const hdr = document.createElement("span");
+        hdr.textContent = "Further reading";
+        linksEl.appendChild(hdr);
+        c.links.forEach((lnk) => {
+          const a = document.createElement("a");
+          a.href = lnk.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = lnk.label;
+          linksEl.appendChild(document.createElement("br"));
+          linksEl.appendChild(a);
+        });
+      }
+      document.getElementById("backdrop").classList.add("is-open");
+      document.getElementById("drawer").classList.add("is-open");
+      document.getElementById("backdrop").setAttribute("aria-hidden", "false");
+      document.getElementById("drawer").setAttribute("aria-hidden", "false");
+    }
+
+    function closeDrawer() {
+      document.getElementById("backdrop").classList.remove("is-open");
+      document.getElementById("drawer").classList.remove("is-open");
+      document.getElementById("backdrop").setAttribute("aria-hidden", "true");
+      document.getElementById("drawer").setAttribute("aria-hidden", "true");
+    }
+
+    function makeCard(id, label, onDetailClick) {
+      const el = document.createElement("div");
+      el.className = "card";
+      el.textContent = label;
+      el.draggable = true;
+      el.dataset.conceptId = id;
+      el.tabIndex = 0;
+      el.setAttribute("role", "button");
+      el.addEventListener("click", () => {
+        if (Date.now() < suppressCardClickUntil) return;
+        if (onDetailClick) onDetailClick(id);
+      });
+      el.addEventListener("keydown", (e) => {
+        if ((e.key === "Enter" || e.key === " ") && onDetailClick) {
+          e.preventDefault();
+          onDetailClick(id);
+        }
+      });
+      el.title = "Drag to a slot, or click / Enter for definition and links";
+      el.addEventListener("dragstart", (e) => {
+        draggedEl = el;
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text/plain", id);
+        el.style.opacity = "0.65";
+      });
+      el.addEventListener("dragend", () => {
+        el.style.opacity = "";
+        draggedEl = null;
+        suppressCardClickUntil = Date.now() + 400;
+      });
+      return el;
+    }
+
+    function wireDropZone(zone, afterDrop) {
+      const singleCardSlot =
+        zone.classList.contains("slot") || zone.classList.contains("stack-slot");
+
+      zone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        zone.classList.add("drag-over");
+      });
+      zone.addEventListener("dragleave", () => zone.classList.remove("drag-over"));
+      zone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        zone.classList.remove("drag-over");
+        const id = e.dataTransfer.getData("text/plain");
+        const moving = draggedEl || document.querySelector(`[data-concept-id="${id}"]`);
+        if (!moving || zone.contains(moving)) {
+          if (afterDrop) afterDrop();
+          return;
+        }
+
+        const existingCard = singleCardSlot ? zone.querySelector(".card") : null;
+        if (existingCard && singleCardSlot) {
+          const parent = moving.parentNode;
+          zone.appendChild(moving);
+          if (
+            parent &&
+            (parent.classList.contains("slot") ||
+              parent.classList.contains("stack-slot") ||
+              parent.classList.contains("bank-cards"))
+          ) {
+            parent.appendChild(existingCard);
+          }
+        } else if (moving) {
+          zone.appendChild(moving);
+        }
+
+        if (zone.classList.contains("slot") || zone.id === "bank") {
+          document.getElementById("pipeline-feedback").textContent = "";
+          hidePipelineChart();
+        }
+
+        if (zone.classList.contains("stack-slot") || zone.id === "stack-bank") {
+          document.getElementById("stack-feedback").textContent = "";
+          hideStackChart();
+        }
+
+        clearPipelineMarks();
+        if (afterDrop) afterDrop();
+      });
+    }
+
+    function clearPipelineMarks() {
+      document.querySelectorAll(".slot.result-ok, .slot.result-bad").forEach((z) => {
+        z.classList.remove("result-ok", "result-bad");
+      });
+    }
+
+    function hidePipelineChart() {
+      const wrap = document.getElementById("pipeline-chart");
+      if (!wrap) return;
+      wrap.classList.remove("is-visible");
+      wrap.innerHTML = "";
+    }
+
+    function renderPipelineChart() {
+      const wrap = document.getElementById("pipeline-chart");
+      if (!wrap) return;
+      wrap.classList.add("is-visible");
+      wrap.textContent = "";
+
+      const title = document.createElement("h3");
+      title.className = "pipeline-chart-title";
+      title.textContent = "How these concepts link — Unit 2 at a glance";
+      wrap.appendChild(title);
+
+      const sub = document.createElement("p");
+      sub.className = "pipeline-chart-sub";
+      sub.textContent =
+        "Follow the arrows: each box is one step in the teaching story; the line in between is why the next step exists. Use this in class to debrief after Check order.";
+      wrap.appendChild(sub);
+
+      const flow = document.createElement("div");
+      flow.className = "chart-flow";
+
+      PIPELINE_ORDER.forEach((id, idx) => {
+        const concept = CONCEPTS[id];
+        const node = document.createElement("div");
+        node.className = "chart-node";
+
+        const num = document.createElement("span");
+        num.className = "chart-node-num";
+        num.textContent = String(idx + 1);
+
+        const textWrap = document.createElement("div");
+        textWrap.className = "chart-node-text";
+        const boldTitle = document.createElement("strong");
+        boldTitle.textContent = concept.title;
+        textWrap.appendChild(boldTitle);
+        if (concept.summary) {
+          textWrap.appendChild(document.createTextNode(" — "));
+          textWrap.appendChild(document.createTextNode(concept.summary));
+        }
+
+        node.appendChild(num);
+        node.appendChild(textWrap);
+        flow.appendChild(node);
+
+        if (idx < PIPELINE_ORDER.length - 1) {
+          const arrow = document.createElement("div");
+          arrow.className = "chart-arrow";
+          const inner = document.createElement("div");
+          inner.className = "chart-arrow-inner";
+          inner.appendChild(parseBold(PIPELINE_LINK_TEXTS[idx]));
+          arrow.appendChild(inner);
+          flow.appendChild(arrow);
+        }
+      });
+
+      wrap.appendChild(flow);
+    }
+
+    function hideStackChart() {
+      const wrap = document.getElementById("stack-chart");
+      if (!wrap) return;
+      wrap.classList.remove("is-visible");
+      wrap.innerHTML = "";
+    }
+
+    function renderStackChart() {
+      const wrap = document.getElementById("stack-chart");
+      if (!wrap) return;
+      wrap.classList.add("is-visible");
+      wrap.textContent = "";
+
+      const title = document.createElement("h3");
+      title.className = "pipeline-chart-title";
+      title.textContent = "How the Spark stack fits together";
+      wrap.appendChild(title);
+
+      const sub = document.createElement("p");
+      sub.className = "pipeline-chart-sub";
+      sub.textContent =
+        "Read from step 1 (bottom: hardware) upward to step 4 (top: what you write). Each arrow is the dependency between neighbouring layers — same order as your tiles left → right.";
+      wrap.appendChild(sub);
+
+      const flow = document.createElement("div");
+      flow.className = "chart-flow";
+
+      STACK_ORDER.forEach((id, idx) => {
+        const layer = STACK_CONCEPTS[id];
+        const node = document.createElement("div");
+        node.className = "chart-node";
+
+        const num = document.createElement("span");
+        num.className = "chart-node-num";
+        num.textContent = String(idx + 1);
+
+        const textWrap = document.createElement("div");
+        textWrap.className = "chart-node-text";
+        const boldTitle = document.createElement("strong");
+        boldTitle.textContent = layer.title;
+        textWrap.appendChild(boldTitle);
+        if (layer.summary) {
+          textWrap.appendChild(document.createTextNode(" — "));
+          textWrap.appendChild(document.createTextNode(layer.summary));
+        }
+
+        node.appendChild(num);
+        node.appendChild(textWrap);
+        flow.appendChild(node);
+
+        if (idx < STACK_ORDER.length - 1) {
+          const arrow = document.createElement("div");
+          arrow.className = "chart-arrow";
+          const inner = document.createElement("div");
+          inner.className = "chart-arrow-inner";
+          inner.appendChild(parseBold(STACK_LINK_TEXTS[idx]));
+          arrow.appendChild(inner);
+          flow.appendChild(arrow);
+        }
+      });
+
+      wrap.appendChild(flow);
+    }
+
+    function buildPipeline() {
+      const slotsRoot = document.getElementById("slots");
+      const bankRoot = document.getElementById("bank");
+      slotsRoot.textContent = "";
+      bankRoot.textContent = "";
+
+      PIPELINE_ORDER.forEach((id, idx) => {
+        const row = document.createElement("div");
+        row.className = "slot-row";
+        const num = document.createElement("div");
+        num.className = "slot-num";
+        num.textContent = String(idx + 1);
+        const slot = document.createElement("div");
+        slot.className = "slot";
+        slot.dataset.slotIndex = String(idx);
+        wireDropZone(slot);
+        row.appendChild(num);
+        row.appendChild(slot);
+        slotsRoot.appendChild(row);
+      });
+
+      const shuffled = [...PIPELINE_ORDER].sort(() => Math.random() - 0.5);
+      shuffled.forEach((id) => {
+        const c = CONCEPTS[id];
+        const card = makeCard(id, c.title, (kid) => openDrawer(kid, CONCEPTS));
+        bankRoot.appendChild(card);
+      });
+    }
+
+    function checkPipeline() {
+      const feedback = document.getElementById("pipeline-feedback");
+      clearPipelineMarks();
+      let correct = 0;
+      document.querySelectorAll("#slots .slot").forEach((slot, idx) => {
+        const card = slot.querySelector(".card");
+        const expected = PIPELINE_ORDER[idx];
+        if (card && card.dataset.conceptId === expected) {
+          correct++;
+          slot.classList.add("result-ok");
+        } else {
+          slot.classList.add("result-bad");
+        }
+      });
+      if (correct === PIPELINE_ORDER.length) {
+        feedback.textContent = "Excellent — the full story matches Unit 2’s arc. Use the diagram below to recap, then discuss: where might MapReduce still appear in a modern stack?";
+        feedback.className = "feedback ok";
+      } else {
+        feedback.textContent = `${correct} / ${PIPELINE_ORDER.length} correct. Fix the rows marked in red, then check again. The diagram below still shows the intended flow so you can compare and discuss as a group.`;
+        feedback.className = "feedback bad";
+      }
+      renderPipelineChart();
+    }
+
+    function shufflePipelineBank() {
+      const bank = document.getElementById("bank");
+      const cards = Array.from(bank.querySelectorAll(".card"));
+      cards.sort(() => Math.random() - 0.5);
+      cards.forEach((c) => bank.appendChild(c));
+      clearPipelineMarks();
+      document.getElementById("pipeline-feedback").textContent = "";
+      hidePipelineChart();
+    }
+
+    function resetPipeline() {
+      document.querySelectorAll("#slots .slot .card").forEach((card) => {
+        document.getElementById("bank").appendChild(card);
+      });
+      shufflePipelineBank();
+    }
+
+    function buildStackGame() {
+      const slotsRoot = document.getElementById("stack-slots");
+      const bankRoot = document.getElementById("stack-bank");
+      slotsRoot.textContent = "";
+      bankRoot.textContent = "";
+      STACK_ORDER.forEach((id, idx) => {
+        const slot = document.createElement("div");
+        slot.className = "stack-slot";
+        slot.dataset.stackIndex = String(idx);
+        wireDropZone(slot, () => {
+          document.getElementById("stack-feedback").textContent = "";
+        });
+        slotsRoot.appendChild(slot);
+      });
+      const shuffled = [...STACK_ORDER].sort(() => Math.random() - 0.5);
+      shuffled.forEach((id) => {
+        const c = STACK_CONCEPTS[id];
+        const card = makeCard(id, c.title, (kid) => openDrawer(kid, STACK_CONCEPTS));
+        bankRoot.appendChild(card);
+      });
+    }
+
+    function checkStack() {
+      const feedback = document.getElementById("stack-feedback");
+      let ok = true;
+      document.querySelectorAll("#stack-slots .stack-slot").forEach((slot, idx) => {
+        const card = slot.querySelector(".card");
+        if (!card || card.dataset.conceptId !== STACK_ORDER[idx]) ok = false;
+      });
+      feedback.textContent = ok
+        ? "Correct — cluster & executors first, then the driver and cluster manager who orchestrate work, then Spark Core / RDD, then PySpark and Spark SQL at the top. Use the diagram below to walk through the links."
+        : "Not quite — left to right: machines and executors → who coordinates jobs (driver + cluster manager) → Spark Core / RDD → what you write (PySpark / Spark SQL). The diagram below still shows the intended relationships.";
+      feedback.className = ok ? "feedback ok" : "feedback bad";
+      renderStackChart();
+    }
+
+    function buildConceptMap() {
+      const root = document.getElementById("concept-map");
+      root.textContent = "";
+      CONCEPT_MAP_ORDER.forEach((key) => {
+        const c = CONCEPTS[key];
+        if (!c) return;
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "node";
+        btn.innerHTML = `<h3>${c.title}</h3><p>${c.summary}</p>`;
+        btn.addEventListener("click", () => openDrawer(key, CONCEPTS));
+        root.appendChild(btn);
+      });
+    }
+
+    // Tabs
+    document.querySelectorAll('[role="tab"]').forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const id = tab.getAttribute("aria-controls");
+        document.querySelectorAll('[role="tab"]').forEach((t) => {
+          t.setAttribute("aria-selected", t === tab ? "true" : "false");
+        });
+        document.querySelectorAll(".panel").forEach((p) => {
+          const active = p.id === id;
+          p.classList.toggle("is-active", active);
+          p.hidden = !active;
+        });
+      });
+    });
+
+    document.getElementById("drawer-close").addEventListener("click", closeDrawer);
+    document.getElementById("backdrop").addEventListener("click", closeDrawer);
+
+    document.getElementById("check-pipeline").addEventListener("click", checkPipeline);
+    document.getElementById("shuffle-pipeline").addEventListener("click", shufflePipelineBank);
+    document.getElementById("reset-pipeline").addEventListener("click", resetPipeline);
+
+    document.getElementById("check-stack").addEventListener("click", checkStack);
+    document.getElementById("shuffle-stack").addEventListener("click", () => {
+      const bank = document.getElementById("stack-bank");
+      Array.from(bank.querySelectorAll(".card"))
+        .sort(() => Math.random() - 0.5)
+        .forEach((c) => bank.appendChild(c));
+      document.getElementById("stack-feedback").textContent = "";
+      hideStackChart();
+    });
+
+    wireDropZone(document.getElementById("bank"));
+    wireDropZone(document.getElementById("stack-bank"), () => {
+      document.getElementById("stack-feedback").textContent = "";
+    });
+
+    buildPipeline();
+    buildStackGame();
+    buildConceptMap();
+  </script>
+</body>
+</html>

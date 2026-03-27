@@ -39,6 +39,12 @@ Apache Zeppelin notebook examples for:
 - **7 files** (4 Jupyter notebooks and 3 native Zeppelin format files) covering interactive data analysis, real-time processing, and property market analysis
 - See [`Zeppelin/README.md`](Zeppelin/README.md) for complete documentation
 
+### **docs/** — Unit 2 recap (static game for students)
+
+- Single-page interactive recap: Spark / big-data concepts as a chain game ([`docs/index.html`](docs/index.html)).
+- **Public URL (after GitHub Pages is switched on):** [https://rendzina.github.io/BigDataAndVisualisation/](https://rendzina.github.io/BigDataAndVisualisation/)  
+  In the repo: **Settings → Pages → Build and deployment →** Branch **main**, folder **/docs**, then save. The site can take a minute to appear.
+
 ## Key Features
 
 - **Multi-Platform Support**: Examples for Google Colab, Azure HDInsight, and local development
