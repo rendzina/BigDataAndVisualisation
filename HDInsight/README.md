@@ -162,7 +162,7 @@ These notebooks support learning in:
 
 ## Author
 
-**S. Hallett**  
+Originally written by **S. Hallett** and updated by **A. Khouakhi**.  
 Course: MK:U, Big Data and Visualisation  
 Date: 29/09/2025
 

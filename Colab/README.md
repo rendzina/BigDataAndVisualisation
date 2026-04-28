@@ -117,7 +117,7 @@ These notebooks are designed for educational purposes and demonstrate:
 
 ## Author
 
-**S. Hallett**  
+Originally written by **S. Hallett** and updated by **A. Khouakhi**.  
 Course: MK:U, Big Data and Visualisation  
 Date: 29/10/2025
 

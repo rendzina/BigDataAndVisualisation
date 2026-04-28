@@ -217,7 +217,7 @@ This project is for educational purposes. Please ensure you have appropriate per
 
 ## Author
 
-**S. Hallett**  
+Originally written by **S. Hallett** and updated by **A. Khouakhi**.  
 Course: MK:U, Big Data and Visualisation  
 Date: 23/11/2025
 
